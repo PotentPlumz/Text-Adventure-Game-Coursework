@@ -1,17 +1,18 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
 using System.Media;
 using System.Runtime.InteropServices;
 
 namespace coursework_project
 {
-    internal class Menu
+    internal class Main_Menu
     {
         static public void welcome_screen()
         {
 
             //Make sure to follow copyright laws and credit the authors for the Asc key art and sounds/music
-            SoundPlayer sound = new SoundPlayer("main_menu_music.wav");
-            sound.Play();
+
+            File_Load.main_menu_music.Play();
             Console.WriteLine("""\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\""");
             string message = ("|    Welcome to Morgan's game!    |");
 
@@ -23,10 +24,10 @@ namespace coursework_project
             Console.WriteLine();
             Console.WriteLine("""\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\""");
         }
-        static public void main_menu()
+        static public void main_menu(List<string> menu_to_display)
         {
             Console.CursorVisible = false;
-            Console.WriteLine("\nPlease use the Up and Down arrows to select an option\n");
+            Console.WriteLine("\nPlease use the Up and Down arrows to navigate and press Enter to select an option\n");
             Console.WriteLine("   \x1B[4mMain Menu\x1B[0m");
 
             (int cursor_menu_hori, int cursor_menu_vert) = Console.GetCursorPosition();
@@ -39,30 +40,30 @@ namespace coursework_project
 
             string red_text_colour = "\x1b[1;31m";
             string default_colour_code = "\u001b[0m";
-            string black_text_colour = "\x1b[1; 31m";
 
             while (selected_item == false)
             {
                 Console.SetCursorPosition(cursor_menu_hori, cursor_menu_vert);
 
-                Console.WriteLine($"1) {(menu_position == 1 ? red_text_colour : "")}New Game" + default_colour_code);
-                Console.WriteLine($"2) {(menu_position == 2 ? red_text_colour : "")}Load Game"+ default_colour_code);
-                Console.WriteLine($"3) {(menu_position == 3 ? red_text_colour : "")}Options" + default_colour_code);
-                Console.WriteLine($"4) {(menu_position == 4 ? red_text_colour : "")}Exit" + default_colour_code);
+
+                for (int i = 0;i < menu_to_display.Count;i++)
+                {
+                    Console.WriteLine($"{i+1}) {(menu_position == i+1 ? red_text_colour : "")}{menu_to_display[i]}" + default_colour_code);
+                }
 
                 user_keypress = Console.ReadKey();
 
                 if (user_keypress.Key == ConsoleKey.DownArrow)
                 {
                     menu_position++;
-                    if (menu_position == 5)
+                    if (menu_position == menu_to_display.Count + 1)
                         menu_position = 1;
                 }
                 if (user_keypress.Key == ConsoleKey.UpArrow)
                 {
                     menu_position--;
                     if (menu_position == 0)
-                        menu_position = 4;
+                        menu_position = menu_to_display.Count;
                 }
                 if (user_keypress.Key == ConsoleKey.Enter)
                 {
@@ -72,6 +73,7 @@ namespace coursework_project
 
 
             }
+
 
         }
     }
