@@ -5,15 +5,11 @@ using System.Runtime.InteropServices;
 
 namespace coursework_project
 {
-    internal class MenuCall
+    internal class Menu_Call_Func
     {
-
-        static public void main_menu(List<string> menu_to_display)
+        static public int display_menu(List<string> menu_to_display)
         {
-            Console.CursorVisible = false;
-            Console.WriteLine("\nPlease use the Up and Down arrows to navigate and press Enter to select an option\n");
-            Console.WriteLine("   \x1B[4mMain Menu\x1B[0m");
-
+            //This collects the cursor position at the beginning of where the text is getting displayed 
             (int cursor_menu_hori, int cursor_menu_vert) = Console.GetCursorPosition();
 
             bool selected_item = false;
@@ -21,18 +17,14 @@ namespace coursework_project
 
             ConsoleKeyInfo user_keypress;
 
-
-            string red_text_colour = "\x1b[1;31m";
-            string default_colour_code = "\u001b[0m";
-
             while (selected_item == false)
             {
                 Console.SetCursorPosition(cursor_menu_hori, cursor_menu_vert);
 
-
+                //This is the code that loads all of the options contained in the inputted list and displayed them to the user
                 for (int i = 0;i < menu_to_display.Count;i++)
                 {
-                    Console.WriteLine($"{i+1}) {(menu_position == i+1 ? red_text_colour : "")}{menu_to_display[i]}" + default_colour_code);
+                    Console.WriteLine($"{i+1}) {(menu_position == i+1 ? File_Load.red_text_colour : "")}{menu_to_display[i]}" + File_Load.default_colour_code);
                 }
 
                 user_keypress = Console.ReadKey();
@@ -52,13 +44,10 @@ namespace coursework_project
                 if (user_keypress.Key == ConsoleKey.Enter)
                 {
                     selected_item = true;
-                    Console.WriteLine($"You have selected option {menu_position}");
+                    Console.WriteLine($"You have selected option {menu_to_display[menu_position - 1]}");
                 }
-
-
             }
-
-
+            return menu_position;
         }
     }
 }
