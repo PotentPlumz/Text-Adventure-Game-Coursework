@@ -14,18 +14,14 @@
             Main_Menu.welcome_screen();
 
             //List of all the main menu options 
-            List<string> main_menu_options = new List<string>();
-            main_menu_options.Add("New Game");
-            main_menu_options.Add("Load Game");
-            main_menu_options.Add("Options");
-            main_menu_options.Add("Exit Game");
 
-            Main_Menu.main_menu(main_menu_options);
+
+            Main_Menu.call_main_menu();
             
 
             //New game 
             Game_Display.display_screen(Main_Menu.player_name);
-            Main_Menu.main_menu(main_menu_options);
+            Main_Menu.call_main_menu();
         }
     }
 }

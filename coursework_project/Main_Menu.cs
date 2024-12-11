@@ -18,15 +18,21 @@
             Console.WriteLine();
             Console.WriteLine("""\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\""");
         }
-        static public void main_menu(List<string> menu_to_display)
+        static public void call_main_menu()
         {
             Console.CursorVisible = false;
             Console.WriteLine("\nPlease use the Up and Down arrows to navigate and press Enter to select an option\n");
             Console.WriteLine("   \x1B[4mMain Menu\x1B[0m");
 
-            int selection = Menu_Call_Func.display_menu(menu_to_display);
+            List<string> main_menu_options = new List<string>();
+            main_menu_options.Add("New Game");
+            main_menu_options.Add("Load Game");
+            main_menu_options.Add("Options");
+            main_menu_options.Add("Exit Game");
 
-            Console.Clear();
+            int selection = Menu_Call_Func.display_menu(main_menu_options);
+
+            Console.CursorVisible=true;
 
             switch (selection)
             {
@@ -34,20 +40,25 @@
                     bool name_correct = false;
                     while (name_correct == false)
                     {
-                        Console.Write("Please enter your characters name: ");
+
+                        Console.Write("Please enter your character's name: ");
                         player_name = Console.ReadLine();
 
                         if (player_name.Length < 1 || player_name.Length > 12)
+                        {
+                            Console.Clear();
                             Console.WriteLine("Please enter another name, it must be at least 1 character and no more than 12 characters long");
+                        }
                         else
+                        {
                             Console.WriteLine("Your player name is " + player_name);
-                        name_correct = true;
+                            name_correct = true;
+                        }
                     }
                     break;
-
-
-
+                                        
             }
+
 
 
 
