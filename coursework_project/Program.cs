@@ -12,18 +12,21 @@
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 
-            Main_Menu.set_options_from_config();
-            Main_Menu.welcome_screen();
+            File_Load.main_menu_music.Play();
 
-            //List of all the main menu options 
+            //List of all the main menu options
+            welcome_main_menu();
 
-
-            Main_Menu.call_main_menu();
-            
             //New game 
             Game_Display.display_screen(Main_Menu.player_name);
 
-
+            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh");
+        }
+        static public void welcome_main_menu()
+        {
+            Main_Menu.set_options_from_config();
+            Main_Menu.welcome_screen();
+            Main_Menu.call_main_menu();
         }
     }
 }

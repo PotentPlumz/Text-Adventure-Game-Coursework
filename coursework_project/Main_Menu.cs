@@ -7,19 +7,12 @@
         public static string config_file_path = "config.txt";
         static public void welcome_screen()
         {
-
-            File_Load.main_menu_music.Play();
             Console.WriteLine("""/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\""");
-            string message = ("|     Welcome to Morgan's Mansion Escape!    |");
-
-            for (int i = 0; i < message.Length; i++)
-            {
-                Console.Write(message[i]);
-                Thread.Sleep(Program.scroll_speed);
-            }
+            Display_text_func.display_text("|     Welcome to Morgan's Mansion Escape!    |");
             Console.WriteLine();
             Console.WriteLine("""/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\""");
         }
+
         static public void call_main_menu()
         {
             Console.CursorVisible = false;
@@ -50,6 +43,7 @@
             //Displays to the user
             Console.WriteLine("\nPlease use the Up and Down arrows to navigate and press Enter to select an option\n");
             Console.WriteLine("   \x1B[4mMain Menu\x1B[0m");
+
 
             int main_selection = Menu_Call_Func.display_menu(main_menu_options);
 
@@ -101,7 +95,7 @@
             if (options_selection == 2)
             {
                 Console.Clear();
-                Program.Main();
+                Program.welcome_main_menu();
             }
             else
             {
@@ -137,7 +131,7 @@
             if (scroll_selection == 4)
             {
                 Console.Clear();
-                Program.Main();
+                Program.welcome_main_menu();
             }
         }
         static void scroll_speed_display()
@@ -145,7 +139,7 @@
             Console.WriteLine("Scroll speed sucessfully updated.");
             Thread.Sleep(1500);
             Console.Clear();
-            Program.Main();
+            Program.welcome_main_menu();
         }
         static public void set_options_from_config()
         {

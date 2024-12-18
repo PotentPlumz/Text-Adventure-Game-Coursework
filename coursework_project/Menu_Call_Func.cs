@@ -27,7 +27,7 @@ namespace coursework_project
                     Console.WriteLine($"{i+1}) {(menu_position == i+1 ? File_Load.red_text_colour : "")}{menu_to_display[i]}" + File_Load.default_colour_code);
                 }
 
-                user_keypress = Console.ReadKey();
+                user_keypress = Console.ReadKey(true);
 
                 if (user_keypress.Key == ConsoleKey.DownArrow)
                 {
