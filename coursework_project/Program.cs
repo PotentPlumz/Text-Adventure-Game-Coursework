@@ -18,9 +18,14 @@
             welcome_main_menu();
 
             //New game 
+            File_Load.main_menu_music.Stop();
             Game_Display.display_screen(Main_Menu.player_name);
 
+            Console.CursorVisible = false;
+
             Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh");
+            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdsssdhwwwete");
+            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfggfdyrtuytjhjsfdhfsdhfsdghfgdh");
         }
         static public void welcome_main_menu()
         {

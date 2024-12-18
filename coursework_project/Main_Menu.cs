@@ -8,7 +8,7 @@
         static public void welcome_screen()
         {
             Console.WriteLine("""/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\""");
-            Display_text_func.display_text("|     Welcome to Morgan's Mansion Escape!    |");
+            Display_text_func.display_title_menu("|     Welcome to Morgan's Mansion Escape!    |");
             Console.WriteLine();
             Console.WriteLine("""/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\""");
         }
