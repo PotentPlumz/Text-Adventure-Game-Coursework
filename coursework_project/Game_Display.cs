@@ -8,7 +8,7 @@
             int name_box_length = 16;
             int display_box_length = 120;
 
-            string name_with_spaces = display_spaces(char_name, 12);
+            string name_with_spaces = display_spaces_after_name(char_name);
             Console.Clear();
             for (int i = 0; i < name_box_length; i++)
             {
@@ -20,12 +20,12 @@
             for (int i = 0; i < display_box_length; i++)
             {
                 Console.Write("-");
-
             }
-            Console.ReadKey();
         }
-        public static string display_spaces(string name, int spaces)
+        //This function below adds spaces at the end of the character name so the box shape never changes 
+        public static string display_spaces_after_name(string name)
         {
+            int spaces = 12;
             int length = name.Length;
             int difference = spaces - length;
 

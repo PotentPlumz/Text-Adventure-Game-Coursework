@@ -44,7 +44,7 @@ namespace coursework_project
                 if (user_keypress.Key == ConsoleKey.Enter)
                 {
                     selected_item = true;
-                    Console.WriteLine($"You have selected option {menu_to_display[menu_position - 1]}");
+                   // Console.WriteLine($"You have selected option {menu_to_display[menu_position - 1]}");
                 }
             }
             return menu_position;

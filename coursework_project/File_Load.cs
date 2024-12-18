@@ -8,6 +8,8 @@ namespace coursework_project
         public static string red_text_colour = "\x1b[1;31m";
         public static string default_colour_code = "\u001b[0m";
 
+        public static int scroll_speed = 0;
+
         public static SoundPlayer main_menu_music;
 
         static public void Check_files_proceedure()
@@ -18,6 +20,10 @@ namespace coursework_project
             an exception if any are missing. */
             try
             {
+                //Config file
+                StreamReader config_file = new StreamReader("config.txt");
+                config_file.Close();
+
                 //Sound files 
                 //Make sure to follow copyright laws and credit the authors for the Asc key art and sounds/music
                 main_menu_music = new SoundPlayer("sound_files/main_menu_music.wav");
@@ -29,7 +35,7 @@ namespace coursework_project
             }
             catch 
             { 
-                throw new Exception("Missing one or more files, please redownload from source"); 
+                throw new Exception("Missing one or more files, please redownload from source."); 
             }
 
         }   
