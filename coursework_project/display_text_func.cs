@@ -11,6 +11,8 @@
                 Console.Write(text_to_display[i]);
                 Thread.Sleep(Program.scroll_speed);
 
+                //This code allows the player to skip the text rollout animation by seeing if a userkeypress occours 
+                //and then displaying the remainder of the string 
                 if (Console.KeyAvailable == true)
                 { ConsoleKeyInfo user_keypress = Console.ReadKey(true);
 
@@ -22,8 +24,10 @@
                 }
             }
         }
-        public static void display_text(string text_to_display)
+        public static void display_text(string text_to_display, string char_name)
         {
+            Game_Display.display_screen(char_name);
+
             (int cursor_menu_hori, int cursor_menu_vert) = Console.GetCursorPosition();
 
             //This needs fixing
@@ -31,7 +35,7 @@
 
 
             Console.ReadKey(true);
-            Console.SetCursorPosition(119, 119);
+            Console.SetCursorPosition(cursor_menu_hori, cursor_menu_vert);
         }
 
 

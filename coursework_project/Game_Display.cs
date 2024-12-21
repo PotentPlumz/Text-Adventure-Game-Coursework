@@ -5,6 +5,8 @@
 
         public static void display_screen(string char_name)
         {
+
+            //The defined paramenters of the game display box 
             int name_box_length = 16;
             int display_box_length = 120;
 

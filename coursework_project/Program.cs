@@ -19,13 +19,17 @@
 
             //New game 
             File_Load.main_menu_music.Stop();
-            Game_Display.display_screen(Main_Menu.player_name);
+
 
             Console.CursorVisible = false;
 
-            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh");
-            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdsssdhwwwete");
-            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfggfdyrtuytjhjsfdhfsdhfsdghfgdh");
+
+            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh", "geoff");
+            Display_text_func.display_text("goodbye ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdsssdhwwwete", "Dave");
+            Display_text_func.display_text("help ffgfdghfdghfdfghfdfgsfdfggfdyrtuytjhjsfdhfsdhfsdghfgdh", Main_Menu.player_name);
+
+
+            Display_text_func.display_text("Hello old friend", "Geoff");
         }
         static public void welcome_main_menu()
         {
