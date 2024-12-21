@@ -2,13 +2,14 @@
 {
     internal class Main_Menu
 
-    {
-        public static string player_name;
+    {//This file contains all logic associated with the main menu. 
+
+
         public static string config_file_path = "config.txt";
         static public void welcome_screen()
         {
             Console.WriteLine("""/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\""");
-            Display_text_func.display_title_menu("|     Welcome to Morgan's Mansion Escape!    |");
+            Display_text_func.rollout_text("|     Welcome to Morgan's Mansion Escape!    |");
             Console.WriteLine();
             Console.WriteLine("""/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\""");
         }
@@ -69,26 +70,29 @@
         {
             Console.CursorVisible = true;
             bool name_correct = false;
+
+            //Repeatadly asks the user to enter their char name. This is planned to also be the file name of the serialised save game file 
             while (name_correct == false)
             {
 
                 Console.Write("\nPlease enter your character's name: ");
-                player_name = Console.ReadLine();
+                Program.player_name = Console.ReadLine();
 
-                if (player_name.Length < 1 || player_name.Length > 12)
+                if (Program.player_name.Length < 1 || Program.player_name.Length > 12)
                 {
                     Console.Clear();
                     Console.WriteLine("Please enter another name, it must be at least 1 character and no more than 12 characters long");
                 }
                 else
                 {
-                    Console.WriteLine("Your player name is " + player_name);
+                    Console.WriteLine("Your player name is " + Program.player_name);
                     name_correct = true;
                 }
             }
         }
         static public void options_function(List<string> options, List<string> scroll_speeds)
         {
+            //Displays the list of options in the options menu
             Console.Clear();
             Console.WriteLine("Options menu");
             int options_selection = Menu_Call_Func.display_menu(options);
@@ -106,6 +110,7 @@
         }
         static public void scroll_speed_function(List<string> scoll_menu)
         {
+            //has three preset scroll speeds
             int slow = 50;
             int medium = 20;
             int fast = 5;
@@ -150,6 +155,8 @@
 
             string[] reader;
 
+
+            //Allows the config file order to be changed and extra lines added, just as long as the dictionary key doesn't change
             while (!end_of_config_file)
             {
                 reader = config_file.ReadLine().Split("=");

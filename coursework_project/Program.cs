@@ -2,6 +2,7 @@
 {
     internal class Program
     {
+        public static string player_name;
         //This is default scroll speed if config is corrupt
         public static int scroll_speed = 20;
         static public void Main()
@@ -24,9 +25,9 @@
             Console.CursorVisible = false;
 
 
-            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh", "geoff");
+            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh", player_name);
             Display_text_func.display_text("goodbye ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdsssdhwwwete", "Dave");
-            Display_text_func.display_text("help ffgfdghfdghfdfghfdfgsfdfggfdyrtuytjhjsfdhfsdhfsdghfgdh", Main_Menu.player_name);
+            Display_text_func.display_text("help ffgfdghfdghfdfghfdfgsfdfggfdyrtuytjhjsfdhfsdhfsdghfgdh", player_name);
 
 
             Display_text_func.display_text("Hello old friend", "Geoff");

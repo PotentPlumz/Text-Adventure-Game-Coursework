@@ -7,6 +7,9 @@ namespace coursework_project
 {
     internal class Menu_Call_Func
     {
+        //This file contains the sole function used to displayed menu options that can be displayed to the user. It accepts a list of strings,
+        //and displays them to the user. if statements or switch cases are needed as the function outputs the intager of the option they chose 
+
         static public int display_menu(List<string> menu_to_display)
         {
             //This collects the cursor position at the beginning of where the text is getting displayed 
@@ -19,6 +22,7 @@ namespace coursework_project
 
             while (selected_item == false)
             {
+                //Everytime the user selects a new option, the cursor moves to where it began so the options can be redisplayed 
                 Console.SetCursorPosition(cursor_menu_hori, cursor_menu_vert);
 
                 //This is the code that loads all of the options contained in the inputted list and displayed them to the user

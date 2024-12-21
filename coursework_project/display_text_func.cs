@@ -2,8 +2,11 @@
 {
     public class Display_text_func
     {
+        //This file contains two functions
+        //1)  accepts text as input and will display it in the console at the scroll speed from the config file 
+        //2)  Does the same thing but also takes a char name for who is talking and resets the cursor position to accomidate multiple lines of dialogue
 
-        public static void display_title_menu(string text_to_display)
+        public static void rollout_text(string text_to_display)
         {
 
             for (int i = 0; i < text_to_display.Length; i++)
@@ -30,9 +33,7 @@
 
             (int cursor_menu_hori, int cursor_menu_vert) = Console.GetCursorPosition();
 
-            //This needs fixing
-            display_title_menu(text_to_display);
-
+            rollout_text(text_to_display);
 
             Console.ReadKey(true);
             Console.SetCursorPosition(cursor_menu_hori, cursor_menu_vert);
