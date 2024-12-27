@@ -14,6 +14,9 @@ namespace coursework_project
             set_player_name();
             create_new_save_game_file();
         }
+
+
+
         static public void set_player_name()
         {
             Console.CursorVisible = true;

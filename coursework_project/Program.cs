@@ -19,9 +19,10 @@
             //List of all the main menu options
             welcome_main_menu();
 
+            Display_Text_From_File.read_text("enviromental_desc/opening.txt");
 
 
-          
+
 
 
 

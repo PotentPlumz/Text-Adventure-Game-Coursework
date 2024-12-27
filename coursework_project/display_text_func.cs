@@ -8,11 +8,23 @@
 
         public static void rollout_text(string text_to_display)
         {
+            int scroll_speed = Program.scroll_speed;
 
+            int new_line_counter = 0;
             for (int i = 0; i < text_to_display.Length; i++)
             {
+                new_line_counter++;
+
                 Console.Write(text_to_display[i]);
-                Thread.Sleep(Program.scroll_speed);
+
+                if (new_line_counter > 60 && text_to_display[i] == ' ')
+                {
+                    Console.WriteLine();
+                    new_line_counter = 0;
+                }
+
+
+                Thread.Sleep(scroll_speed);
 
                 //This code allows the player to skip the text rollout animation by seeing if a userkeypress occours 
                 //and then displaying the remainder of the string 
@@ -21,8 +33,7 @@
 
                     if (user_keypress.Key == ConsoleKey.Enter || user_keypress.Key == ConsoleKey.Spacebar)
                     {
-                        Console.Write(text_to_display.Substring(i + 1));
-                        break;
+                        scroll_speed = 0;
                     }
                 }
             }

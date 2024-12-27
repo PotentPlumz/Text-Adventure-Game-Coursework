@@ -30,6 +30,8 @@ namespace coursework_project
                 sound_check(main_menu_music);
 
                 //Enviro files
+                StreamReader opening = new StreamReader("enviromental_desc/opening.txt");
+                config_file.Close();
 
                 //Char files
             }
