@@ -22,13 +22,6 @@ namespace coursework_project
                 Display_text_func.display_text(reader, char_name);
                 end_of_file = file_to_read.EndOfStream;
             }
-
-
-
-
-
         }
-        
-
     }
 }
