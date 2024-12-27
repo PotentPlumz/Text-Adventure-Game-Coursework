@@ -1,33 +1,33 @@
 ﻿namespace coursework_project
 {
+
     internal class Program
     {
-        public static string player_name;
+        public static Player current_player = new Player();
+
         //This is default scroll speed if config is corrupt
         public static int scroll_speed = 20;
         static public void Main()
         {
-            File_Load.Check_files_proceedure();
-
             //Allows for use of unicode chars
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-
+            File_Load.Check_files_proceedure();
             File_Load.main_menu_music.Play();
+
 
             //List of all the main menu options
             welcome_main_menu();
 
-            //New game 
-            File_Load.main_menu_music.Stop();
 
 
-            Console.CursorVisible = false;
+          
 
 
-            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh", player_name);
+
+            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh", current_player.name);
             Display_text_func.display_text("goodbye ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdsssdhwwwete", "Dave");
-            Display_text_func.display_text("help ffgfdghfdghfdfghfdfgsfdfggfdyrtuytjhjsfdhfsdhfsdghfgdh", player_name);
+            Display_text_func.display_text("help ffgfdghfdghfdfghfdfgsfdfggfdyrtuytjhjsfdhfsdhfsdghfgdh", current_player.name);
 
 
             Display_text_func.display_text("Hello old friend", "Geoff");

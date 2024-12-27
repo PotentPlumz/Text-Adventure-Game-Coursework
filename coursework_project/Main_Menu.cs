@@ -52,7 +52,7 @@
             switch (main_selection)
             {
                 case 1:
-                    set_player_name();
+                    New_Game.commence_new_game();
                     break;
                 case 2:
 
@@ -64,30 +64,6 @@
                     Console.WriteLine("Thank you for playing, play again soon!");
                     Environment.Exit(0);
                     break;
-            }
-        }
-        static public void set_player_name()
-        {
-            Console.CursorVisible = true;
-            bool name_correct = false;
-
-            //Repeatadly asks the user to enter their char name. This is planned to also be the file name of the serialised save game file 
-            while (name_correct == false)
-            {
-
-                Console.Write("\nPlease enter your character's name: ");
-                Program.player_name = Console.ReadLine();
-
-                if (Program.player_name.Length < 1 || Program.player_name.Length > 12)
-                {
-                    Console.Clear();
-                    Console.WriteLine("Please enter another name, it must be at least 1 character and no more than 12 characters long");
-                }
-                else
-                {
-                    Console.WriteLine("Your player name is " + Program.player_name);
-                    name_correct = true;
-                }
             }
         }
         static public void options_function(List<string> options, List<string> scroll_speeds)
