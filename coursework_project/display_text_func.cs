@@ -80,6 +80,19 @@
             display_text_standalone(dialogue, char_name);
             Display_art(art);
         }
+        static public void Display_text_continued(string text_to_display)
+        {
+
+            
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("");
+            }
+            Console.SetCursorPosition(0, 19);
+
+            rollout_text(text_to_display);
+            Console.ReadKey(true);
+        }
 
     }
 }

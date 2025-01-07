@@ -27,8 +27,11 @@
              List<string> goblin_art = File_Load.Load_image("graphics/goblin.txt");
 
             Display_text_func.Display_text_with_art("I am goblin!!!", "goblin", goblin_art);
-            Display_text_func.Display_text_with_art("I am not goblin!!!", "goblin", goblin_art);
-            Display_text_func.Display_text_with_art("you am goblin!!!", "goblin", goblin_art);
+            Display_text_func.Display_text_continued("What bobbbbbbbbbb");
+            Display_text_func.Display_text_continued("ffgfhfh dgfhgfhghgh");
+            Display_text_func.Display_text_continued("Whafghgfhgfhgfhgfhle one");
+            Display_text_func.Display_text_continued("What hgfhgfhgfhgfhgfhfghfghgfone");
+
 
 
 
