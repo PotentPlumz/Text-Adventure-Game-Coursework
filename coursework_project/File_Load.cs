@@ -46,5 +46,27 @@ namespace coursework_project
             sound_file.Play();
             sound_file.Stop();
         }
+
+
+        static public List<string> Load_image(string filename)
+        {
+            StreamReader art_to_display = new StreamReader(filename);
+
+            bool end_of_image = false;
+
+            List<string> lines = new List<string>();
+
+            while (!end_of_image)
+            {
+                lines.Add(art_to_display.ReadLine());
+                end_of_image = art_to_display.EndOfStream;
+            }
+
+            art_to_display.Close();
+
+
+            return lines;
+            
+        }
     }
 }

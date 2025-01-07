@@ -24,11 +24,13 @@
 
             Display_Text_From_File.read_text("enviromental_desc/opening.txt");
 
-            StreamReader goblin = new StreamReader("graphics/goblin.txt");
+             List<string> goblin_art = File_Load.Load_image("graphics/goblin.txt");
 
-            Display_text_func.Displayart(goblin);
+            Display_text_func.Display_text_with_art("I am goblin!!!", "goblin", goblin_art);
+            Display_text_func.Display_text_with_art("I am not goblin!!!", "goblin", goblin_art);
+            Display_text_func.Display_text_with_art("you am goblin!!!", "goblin", goblin_art);
 
-            goblin.Close();
+
 
 
 
