@@ -19,10 +19,15 @@
             //List of all the main menu options
             welcome_main_menu();
 
+
+
+
             Display_Text_From_File.read_text("enviromental_desc/opening.txt");
 
+            StreamReader goblin = new StreamReader("graphics/goblin.txt");
 
-
+            Game_Display.Displayart(goblin);
+            goblin.Close();
 
 
 

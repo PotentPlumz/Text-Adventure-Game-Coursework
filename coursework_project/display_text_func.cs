@@ -8,6 +8,7 @@
 
         public static void rollout_text(string text_to_display)
         {
+            int char_length_to_wrap_to_new_line = 100;
             int scroll_speed = Program.scroll_speed;
 
             int new_line_counter = 0;
@@ -17,7 +18,7 @@
 
                 Console.Write(text_to_display[i]);
 
-                if (new_line_counter > 60 && text_to_display[i] == ' ')
+                if (new_line_counter > char_length_to_wrap_to_new_line && text_to_display[i] == ' ')
                 {
                     Console.WriteLine();
                     new_line_counter = 0;

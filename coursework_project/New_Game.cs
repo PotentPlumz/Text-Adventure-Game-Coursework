@@ -19,7 +19,7 @@ namespace coursework_project
 
         static public void set_player_name()
         {
-            Console.CursorVisible = true;
+            //Console.CursorVisible = true;
             bool name_correct = false;
 
             //Repeatadly asks the user to enter their char name. This is planned to also be the file name of the serialised save game file 
