@@ -50,7 +50,36 @@
             Console.ReadKey(true);
             Console.SetCursorPosition(cursor_menu_hori, cursor_menu_vert);
         }
+        public static void Displayart(StreamReader art_to_display)
+        {
+            (int inital_cursor_hori, int inital_cursor_vert) = Console.GetCursorPosition();
 
+            int horizontal_position = 45;
+            int vertical_poistion = 18;
+
+            bool end_of_image = false;
+            int num_of_lines = 0;
+
+            List<string> lines = new List<string>();
+
+            while (!end_of_image)
+            {
+                lines.Add(art_to_display.ReadLine());
+                num_of_lines++;
+                end_of_image = art_to_display.EndOfStream;
+            }
+            Console.SetCursorPosition(horizontal_position, (vertical_poistion - num_of_lines));
+
+            for (int i = 0; i < num_of_lines; i++)
+            {
+                Console.SetCursorPosition(horizontal_position, (vertical_poistion + i - num_of_lines));
+                Console.WriteLine(lines[i]);
+            }
+            Console.ReadKey();
+
+            Console.SetCursorPosition(inital_cursor_hori, inital_cursor_vert);
+
+        }
 
     }
 }

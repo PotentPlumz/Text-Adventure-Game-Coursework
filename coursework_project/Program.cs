@@ -26,8 +26,10 @@
 
             StreamReader goblin = new StreamReader("graphics/goblin.txt");
 
-            Game_Display.Displayart(goblin);
+            Display_text_func.Displayart(goblin);
+
             goblin.Close();
+
 
 
 
