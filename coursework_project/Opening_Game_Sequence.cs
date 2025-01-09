@@ -17,8 +17,8 @@ namespace coursework_project
             initial_options.Add("Approch him cautiously");
 
 
-            Display_text_func.Display_Menu_Guide("What would you like to do?\n\n");
-            int Dave_Choice = Menu_Call_Func.Display_Menu(initial_options);
+
+            int Dave_Choice = Menu_Call_Func.Display_Main_with_Question(initial_options);
 
             switch(Dave_Choice)
             {

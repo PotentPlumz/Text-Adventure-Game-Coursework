@@ -16,6 +16,10 @@ namespace coursework_project
         {
             this.spoken_to = true;
         }
+        public bool Check_if_Spoken_To()
+        {
+            return this.spoken_to;
+        }
         
 
 

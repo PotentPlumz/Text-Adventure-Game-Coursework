@@ -26,7 +26,7 @@
             Room1_Program.Room1_Entry();
 
 
-             List<string> goblin_art = File_Load.Load_image("graphics/goblin.txt");
+
 
 
 
