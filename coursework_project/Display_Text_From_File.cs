@@ -15,27 +15,29 @@ namespace coursework_project
 
             string char_name = file_to_read.ReadLine();
             string reader;
-            bool initial = true;
+            bool needs_refresh = true;
 
             while (!end_of_file)
             {
                 reader = file_to_read.ReadLine();
+
                 if (reader == "change")
                 {
                     char_name = file_to_read.ReadLine();
+                    needs_refresh = true;
                     continue;
                 }
 
-                if (initial == true)
+                if (needs_refresh == true)
                 Display_text_func.Display_Text_with_Art(reader, char_name, art);
 
                 else
                 Display_text_func.Display_Text_Continued(reader);
 
-                initial = false;
+                needs_refresh = false;
                 end_of_file = file_to_read.EndOfStream;
             }
-
+            file_to_read.Close();
         }
     }
 }

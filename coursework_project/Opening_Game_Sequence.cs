@@ -17,14 +17,14 @@ namespace coursework_project
             initial_options.Add("Approch him cautiously");
 
 
-            Display_text_func.Display_Text_Continued("What would you like to do?:\n\n");
+            Display_text_func.Display_Text_Continued("What would you like to do?\n\n");
             int Dave_Choice = Menu_Call_Func.display_menu(initial_options);
 
             switch(Dave_Choice)
             {
                 case 1:
                     {
-                        Display_text_func.Display_Text("Jesus!!! Don't shake me like that...", "Unknown.");
+                        Display_text_func.Display_Text("Jesus!!! Don't shake me like that...", "Unknown");
                         Display_text_func.Display_Text_Continued("I'm barely hanging on here as it is.");
                         Display_text_func.Display_Text("I apologise, my bad...", "You");
                         Display_text_func.Display_Text("Anyway...", "Unknown");
@@ -35,8 +35,9 @@ namespace coursework_project
                         Display_text_func.Display_Text("As you approach you see the man slowly turn his head towards you.", "...");
                         break;
                     }
-
             }
+            Display_Text_From_File.Read_Text("char_dialogue/dave_intro.txt", Program.no_art_list);
+
                 
         }
 
