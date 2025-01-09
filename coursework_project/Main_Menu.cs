@@ -46,7 +46,7 @@
             Console.WriteLine("   \x1B[4mMain Menu\x1B[0m");
 
 
-            int main_selection = Menu_Call_Func.display_menu(main_menu_options);
+            int main_selection = Menu_Call_Func.Display_Menu(main_menu_options);
 
             //Main menu optons list
             switch (main_selection)
@@ -71,7 +71,7 @@
             //Displays the list of options in the options menu
             Console.Clear();
             Console.WriteLine("Options menu");
-            int options_selection = Menu_Call_Func.display_menu(options);
+            int options_selection = Menu_Call_Func.Display_Menu(options);
             if (options_selection == 2)
             {
                 Console.Clear();
@@ -92,7 +92,7 @@
             int fast = 5;
 
 
-            int scroll_selection = Menu_Call_Func.display_menu(scoll_menu);
+            int scroll_selection = Menu_Call_Func.Display_Menu(scoll_menu);
 
             if (scroll_selection == 1)
             {

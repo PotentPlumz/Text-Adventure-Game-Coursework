@@ -83,10 +83,14 @@
         static public void Display_Text_Continued(string text_to_display)
         {//This proceedure clears all of the space ready for more text. It allows for more text to be displayed without clearing the whole console.
 
+            Display_Menu_Guide(text_to_display);
+            Console.ReadKey(true);
+        }
+        static public void Display_Menu_Guide(string text_to_display)
+        {
             Clear_Dialgoue_Box();
 
             rollout_text(text_to_display);
-            Console.ReadKey(true);
         }
         static public void Clear_Dialgoue_Box()
         {

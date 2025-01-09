@@ -16,6 +16,15 @@ namespace coursework_project
         {
             this.name = name;
         }
+        public void get_description(string filepath)
+        {
+            string description;
+            StreamReader description_file = new StreamReader(filepath);
+            
+                description = description_file.ReadLine();
+            
+            this.entry_description = description;
+        }
 
     }
 }

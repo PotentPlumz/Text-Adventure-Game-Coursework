@@ -10,7 +10,7 @@ namespace coursework_project
         //This file contains the sole function used to displayed menu options that can be displayed to the user. It accepts a list of strings,
         //and displays them to the user. if statements or switch cases are needed as the function outputs the intager of the option they chose 
 
-        static public int display_menu(List<string> menu_to_display)
+        static public int Display_Menu(List<string> menu_to_display)
         {
             //This collects the cursor position at the beginning of where the text is getting displayed 
             (int cursor_menu_hori, int cursor_menu_vert) = Console.GetCursorPosition();
@@ -52,6 +52,13 @@ namespace coursework_project
                 }
             }
             return menu_position;
+        }
+        public static int Display_Main_with_Question(List<string> menu)
+        {
+            Display_text_func.Display_Menu_Guide("What would you like to do?");
+            Console.WriteLine("\n");
+            int choice = Display_Menu(menu);
+            return choice;
         }
     }
 }
