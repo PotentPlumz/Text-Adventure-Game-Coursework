@@ -7,7 +7,7 @@ namespace coursework_project
 {
     internal class Display_Text_From_File
     {
-        public static void read_text(string filepath)
+        public static void read_text(string filepath, List<string> art)
         {
             bool end_of_file = false;
 
@@ -15,13 +15,22 @@ namespace coursework_project
 
             string char_name = file_to_read.ReadLine();
             string reader;
+            bool initial = true;
 
             while (!end_of_file)
             {
                 reader = file_to_read.ReadLine();
-                Display_text_func.display_text(reader, char_name);
+
+                if (initial == true)
+                Display_text_func.Display_text_with_art(reader, char_name, art);
+
+                else
+                Display_text_func.Display_text_continued(reader);
+
+                initial = false;
                 end_of_file = file_to_read.EndOfStream;
             }
+
         }
     }
 }

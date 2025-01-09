@@ -77,22 +77,30 @@
         }
         static public void Display_text_with_art(string dialogue, string char_name, List<string> art)
         {
+            //Standalone is only different from display_art by just not having a readkey so there won't be any pause.
             display_text_standalone(dialogue, char_name);
             Display_art(art);
         }
         static public void Display_text_continued(string text_to_display)
-        {
+        {//This proceedure clears all of the space ready for more text. It allows for more text to be displayed without clearing the whole console.
 
-            
-            for (int i = 0; i < 10; i++)
-            {
-                Console.WriteLine("");
-            }
-            Console.SetCursorPosition(0, 19);
+            Clear_dialgoue_box();
 
             rollout_text(text_to_display);
             Console.ReadKey(true);
         }
+        static public void Clear_dialgoue_box()
+        {
+            //clears the dialgoue box on the screen without clearing the full console 
 
+            Console.SetCursorPosition(0, 19);
+
+            for (int i = 0; i < 15; i++)
+            {
+                Console.WriteLine("                                                                                                                     ");
+            }
+            Console.SetCursorPosition(0, 19);
+
+        }
     }
 }

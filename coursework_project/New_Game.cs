@@ -15,8 +15,6 @@ namespace coursework_project
             create_new_save_game_file();
         }
 
-
-
         static public void set_player_name()
         {
             //Console.CursorVisible = true;
@@ -42,17 +40,17 @@ namespace coursework_project
 
                 }
             }
-            
-
         }
         public static void create_new_save_game_file()
         {
-            StreamWriter save_game_file = new StreamWriter(Program.current_player.name + ".JSON");
+            StreamWriter save_game_file = new StreamWriter("save_games/" + Program.current_player.name + ".JSON");
 
             Dictionary<string, string> savegame_dictionary = new Dictionary<string, string>();
 
             string player_save = JsonSerializer.Serialize(Program.current_player); 
             save_game_file.WriteLine("player=" + player_save);
+
+            save_game_file.Close();
 
 
 

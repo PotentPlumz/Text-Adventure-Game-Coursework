@@ -34,6 +34,12 @@ namespace coursework_project
                 config_file.Close();
 
                 //Char files
+
+                //artwork
+                StreamReader goblin_art = new StreamReader("graphics/goblin.txt");
+                goblin_art.Close();
+
+
             }
             catch 
             { 

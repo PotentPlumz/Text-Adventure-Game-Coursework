@@ -4,6 +4,7 @@
     internal class Program
     {
         public static Player current_player = new Player();
+        public static List<string> no_art_list = new List<string>();
 
         //This is default scroll speed if config is corrupt
         public static int scroll_speed = 20;
@@ -22,9 +23,11 @@
 
 
 
-            Display_Text_From_File.read_text("enviromental_desc/opening.txt");
+
 
              List<string> goblin_art = File_Load.Load_image("graphics/goblin.txt");
+
+            Display_Text_From_File.read_text("enviromental_desc/opening.txt", no_art_list);
 
             Display_text_func.Display_text_with_art("I am goblin!!!", "goblin", goblin_art);
             Display_text_func.Display_text_continued("What bobbbbbbbbbb");
