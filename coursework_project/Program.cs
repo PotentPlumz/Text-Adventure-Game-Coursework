@@ -21,19 +21,13 @@
             welcome_main_menu();
 
 
-
+            //New game starts here 
+            Opening_Game_Sequence.Opening();
 
 
 
              List<string> goblin_art = File_Load.Load_image("graphics/goblin.txt");
 
-            Display_Text_From_File.read_text("enviromental_desc/opening.txt", no_art_list);
-
-            Display_text_func.Display_text_with_art("I am goblin!!!", "goblin", goblin_art);
-            Display_text_func.Display_text_continued("What bobbbbbbbbbb");
-            Display_text_func.Display_text_continued("ffgfhfh dgfhgfhghgh");
-            Display_text_func.Display_text_continued("Whafghgfhgfhgfhgfhle one");
-            Display_text_func.Display_text_continued("What hgfhgfhgfhgfhgfhfghfghgfone");
 
 
 
@@ -41,12 +35,10 @@
 
 
 
-            Display_text_func.display_text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh", current_player.name);
-            Display_text_func.display_text("goodbye ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdsssdhwwwete", "Dave");
-            Display_text_func.display_text("help ffgfdghfdghfdfghfdfgsfdfggfdyrtuytjhjsfdhfsdhfsdghfgdh", current_player.name);
 
 
-            Display_text_func.display_text("Hello old friend", "Geoff");
+            Display_text_func.Display_Text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh", current_player.name);
+
         }
         static public void welcome_main_menu()
         {

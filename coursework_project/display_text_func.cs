@@ -2,9 +2,6 @@
 {
     public class Display_text_func
     {
-        //This file contains two functions
-        //1)  accepts text as input and will display it in the console at the scroll speed from the config file 
-        //2)  Does the same thing but also takes a char name for who is talking and resets the cursor position to accomidate multiple lines of dialogue
 
         public static void rollout_text(string text_to_display)
         {
@@ -18,13 +15,12 @@
 
                 Console.Write(text_to_display[i]);
 
+                //This effecitevly acts as a text wrapper 
                 if (new_line_counter > char_length_to_wrap_to_new_line && text_to_display[i] == ' ')
                 {
                     Console.WriteLine();
                     new_line_counter = 0;
                 }
-
-
                 Thread.Sleep(scroll_speed);
 
                 //This code allows the player to skip the text rollout animation by seeing if a userkeypress occours 
@@ -39,7 +35,7 @@
                 }
             }
         }
-        public static void display_text_standalone(string text_to_display, string char_name)
+        public static void Display_Text_Standalone(string text_to_display, string char_name)
         {
             Game_Display.display_screen(char_name);
 
@@ -50,11 +46,15 @@
 
             Console.SetCursorPosition(cursor_menu_hori, cursor_menu_vert);
         }
-        public static void display_text(string text_to_display, string char_name)
+
+
+        public static void Display_Text(string text_to_display, string char_name)
         {
-            display_text_standalone(text_to_display, char_name);
+            Display_Text_Standalone(text_to_display, char_name);
             Console.ReadKey(true);
         }
+
+
         public static void Display_art(List<string> art_list)
         {
             (int inital_cursor_hori, int inital_cursor_vert) = Console.GetCursorPosition();
@@ -73,29 +73,28 @@
             Console.ReadKey(true);
 
             Console.SetCursorPosition(inital_cursor_hori, inital_cursor_vert);
-
         }
-        static public void Display_text_with_art(string dialogue, string char_name, List<string> art)
+        static public void Display_Text_with_Art(string dialogue, string char_name, List<string> art)
         {
             //Standalone is only different from display_art by just not having a readkey so there won't be any pause.
-            display_text_standalone(dialogue, char_name);
+            Display_Text_Standalone(dialogue, char_name);
             Display_art(art);
         }
-        static public void Display_text_continued(string text_to_display)
+        static public void Display_Text_Continued(string text_to_display)
         {//This proceedure clears all of the space ready for more text. It allows for more text to be displayed without clearing the whole console.
 
-            Clear_dialgoue_box();
+            Clear_Dialgoue_Box();
 
             rollout_text(text_to_display);
             Console.ReadKey(true);
         }
-        static public void Clear_dialgoue_box()
+        static public void Clear_Dialgoue_Box()
         {
             //clears the dialgoue box on the screen without clearing the full console 
 
             Console.SetCursorPosition(0, 19);
 
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine("                                                                                                                     ");
             }

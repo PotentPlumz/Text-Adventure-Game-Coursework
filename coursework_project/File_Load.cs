@@ -30,12 +30,13 @@ namespace coursework_project
                 sound_check(main_menu_music);
 
                 //Enviro files
-                StreamReader opening = new StreamReader("enviromental_desc/opening.txt");
+                StreamReader opening = new StreamReader("enviromental_desc/opening1.txt");
                 config_file.Close();
 
                 //Char files
 
                 //artwork
+                //goblin artwork from https://ascii.co.uk/art/goblin accessed 08/01/25
                 StreamReader goblin_art = new StreamReader("graphics/goblin.txt");
                 goblin_art.Close();
 
