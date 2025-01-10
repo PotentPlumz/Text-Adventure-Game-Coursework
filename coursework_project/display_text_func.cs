@@ -46,6 +46,18 @@
 
             Console.SetCursorPosition(cursor_menu_hori, cursor_menu_vert);
         }
+        public static void Update_Char_Name(string char_name)
+        {
+
+            //2 ,17 are the coordinates for the name box to be sucessfully cleared and updated
+            (int inital_cursor_hori, int inital_cursor_vert) = Console.GetCursorPosition();
+            Console.SetCursorPosition(2, 17);
+            Console.WriteLine("            ");
+            Console.SetCursorPosition(2, 17);
+            Console.WriteLine(char_name);
+            Game_Display.display_spaces_after_name(char_name);
+            Console.SetCursorPosition(inital_cursor_hori, inital_cursor_vert);
+        }
 
 
         public static void Display_Text(string text_to_display, string char_name)

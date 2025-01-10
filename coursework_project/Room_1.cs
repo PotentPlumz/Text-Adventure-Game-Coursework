@@ -71,7 +71,7 @@ namespace coursework_project
             }
             else
             {
-                Display_text_func.Display_Text_Continued("What do you want now?");
+                Display_text_func.Display_Text_with_Art("What do you want now?", "goblin", goblin_art);
                 Menu_Call_Func.Display_Main_with_Question(goblin_options);
 
             }

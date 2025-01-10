@@ -10,8 +10,10 @@
             int display_box_height = 16;
             int display_box_length = 120;
 
-            string name_with_spaces = display_spaces_after_name(char_name);
             Console.Clear();
+
+            string name_with_spaces = display_spaces_after_name(char_name);
+
             for (int i = 0; i < display_box_height; i++)
             {
                 Console.WriteLine("");
