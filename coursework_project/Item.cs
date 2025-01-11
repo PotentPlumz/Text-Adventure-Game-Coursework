@@ -13,6 +13,11 @@ namespace coursework_project
         {
             this.name = name;
         }
+
+        public string Get_Name()
+        {
+            return this.name;
+        }
         public void Set_Base_Damage(int base_damage)
         {
             this.base_damage = base_damage;

@@ -20,6 +20,9 @@ namespace coursework_project
             Sword.Set_Name("Rugged Sword");
             Sword.Set_Base_Damage(8);
 
+            Health_Potion.Set_Name("Health Potion");
+            Health_Potion.Set_Base_Health_Recovery(25);
+
             Chest.Set_Name("Drawer");
             Chest.Put_Item_In(Sword);
             Chest.Put_Item_In(Health_Potion);
@@ -130,7 +133,7 @@ namespace coursework_project
                 case 2:
                     {
                         Game_Display.display_screen("");
-                        Room1_Entry();
+                        Room1_Main_Menu();
                         break;
 
                     }
@@ -139,10 +142,51 @@ namespace coursework_project
         }
         private static void Interact_With_Chest()
         {
+            List<Item> chest_contents = Chest.Get_Contents();
+
             List<string> chest_options = new List<string>();
+            chest_options.Add("Return to Dave");
 
+            foreach (Item item in chest_contents)
+            {
+                chest_options.Add("Pick up " + item.Get_Name());
+            }
 
+            int chest_choice = Menu_Call_Func.Display_Main_with_Question(chest_options);
 
+            switch (chest_choice)
+            {
+                case 1:
+                    {
+                        Game_Display.display_screen("");
+                        Room1_Main_Menu();
+                        break;
+                    }
+                case 2:
+                    {
+                        if (Chest.Get_Contents().Count == 2)
+                            Item_Transfer(Sword);
+
+                        if (Chest.Get_Contents().Count == 1)
+                            Item_Transfer(Health_Potion);
+                        break;
+                    }
+                case 3:
+                    {
+                        Item_Transfer(Health_Potion);
+                        break;
+                    }
+            }
+        }
+        private static void Item_Transfer(Item item)
+        {
+            Program.current_player.Pickup_Item(item);
+            Chest.Take_Item_Out(item);
+            Game_Display.display_screen("");
+            Display_text_func.rollout_text("You just picked up " + item.Get_Name() + ".");
+            Thread.Sleep(1000);
+            Game_Display.display_screen("");
+            Interact_With_Chest();
         }
 
     }
