@@ -35,7 +35,7 @@ namespace coursework_project
                 else
                 {
                     Console.WriteLine("Your player name is " + player_name);
-                    Program.current_player.name = player_name;
+                    Program.current_player.Set_Name(player_name);
                     name_correct = true;
 
                 }
@@ -43,7 +43,7 @@ namespace coursework_project
         }
         public static void create_new_save_game_file()
         {
-            StreamWriter save_game_file = new StreamWriter("save_games/" + Program.current_player.name + ".JSON");
+            StreamWriter save_game_file = new StreamWriter("save_games/" + Program.current_player.Get_Name() + ".JSON");
 
             Dictionary<string, string> savegame_dictionary = new Dictionary<string, string>();
 

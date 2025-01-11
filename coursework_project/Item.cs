@@ -4,13 +4,26 @@ namespace coursework_project
 {
     internal class Item
     {
-        [JsonInclude]
-        public string name;
-        [JsonInclude]
-        public int base_damage;
-        [JsonInclude]
+        private string name;
+        private int base_damage;
         private string description;
-        [JsonInclude]
-        public int base_health_recovery;
+        private int base_health_recovery;
+
+        public void Set_Name(string name)
+        {
+            this.name = name;
+        }
+        public void Set_Base_Damage(int base_damage)
+        {
+            this.base_damage = base_damage;
+        }
+        public void Set_Description(string description)
+        {
+            this.description = description;
+        }
+        public void Set_Base_Health_Recovery(int base_health_recovery)
+        {
+            this.base_health_recovery = base_health_recovery;
+        }
     }
 }

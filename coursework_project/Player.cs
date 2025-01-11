@@ -1,32 +1,69 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Reflection.Metadata.Ecma335;
+using System.Text.Json.Serialization;
 
 namespace coursework_project
 {
     internal class Player
     {
         [JsonInclude]
-        public string name;
+        private string name;
         [JsonInclude]
-        public bool is_alive = true;
+        private bool is_alive = true;
         [JsonInclude]
         private int max_health = 50;
         [JsonInclude]
-        public float health = 15;
+        private float health = 15;
         [JsonInclude]
-        public List<Item> inventory = new List<Item>();
+        private List<Item> inventory = new List<Item>();
+        [JsonIgnore]
+        private int occupying_room_number;
+        
 
-        public void regen_health(float amount)
+        public void Regen_Health(float amount)
         {
             this.health += amount;
 
             if (this.health > max_health)
                 this.health = max_health;
         }
-        public void take_damage(float amount)
+        public void Set_Player_Location(int room_number)
+        {
+            this.occupying_room_number = room_number;
+        }
+
+        public void Take_Damage(float amount)
         {
             this.health -= amount;
             if (this.health <= 0)
                 this.is_alive = false;
+        }
+
+        public void Set_Name(string name)
+        {
+            this.name = name;
+        }
+        public string Get_Name()
+        {
+            return this.name;
+        }
+
+        public bool Check_Health()
+        {
+            if (this.health <= 0)
+            {
+                this.is_alive = false;
+            }
+            return this.is_alive;
+        }
+
+        public void Pickup_Item(Item item)
+        {
+            this.inventory.Add(item);
+        }
+
+        public void Drop_Item(Item item)
+        {
+            this.inventory.Remove(item);
         }
     }
 }

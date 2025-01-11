@@ -18,12 +18,8 @@ namespace coursework_project
         }
         public void get_description(string filepath)
         {
-            string description;
-            StreamReader description_file = new StreamReader(filepath);
-            
-                description = description_file.ReadLine();
-            
-            this.entry_description = description;
+
+            Display_Text_From_File.Read_Text(filepath, Program.no_art_list);
         }
 
     }

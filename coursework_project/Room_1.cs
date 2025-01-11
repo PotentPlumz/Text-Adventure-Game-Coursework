@@ -8,29 +8,38 @@ namespace coursework_project
     {
         public static Room Room1 = new Room();
         public static NPC Goblin_Room1 = new NPC();
+        public static Storage Chest = new Storage();
+        public static Item Sword = new Item();
+        public static Item Health_Potion = new Item();
 
 
         public static void Room1_Entry()
         {
+            Program.current_player.Set_Player_Location(1);
 
+            Sword.Set_Name("Rugged Sword");
+            Sword.Set_Base_Damage(8);
 
-            string room1_desc_filepath = "enviromental_desc/room1_desc.txt"; 
-            Room1.set_name("Room1");
-            Room1.get_description(room1_desc_filepath);
+            Chest.Set_Name("Drawer");
+            Chest.Put_Item_In(Sword);
+            Chest.Put_Item_In(Health_Potion);
+
+            Room1.set_name("Basement");
+
 
             Goblin_Room1.Give_Name("Goblin");
 
-
             Room1_Main_Menu();
-    
         }
         private static void Room1_Main_Menu()
         {
+            string room1_desc_filepath = "enviromental_desc/room1_desc.txt";
+
             List<String> Room1_options = new List<string>();
             Room1_options.Add("Speak to Dave");
             Room1_options.Add("Approch the figure");
-            Room1_options.Add("Look around the room");
-            Room1_options.Add("Search the room.");
+            Room1_options.Add("Visually inspect the room");
+            Room1_options.Add("Search the room");
 
             int main_choice = Menu_Call_Func.Display_Main_with_Question(Room1_options);
 
@@ -46,12 +55,19 @@ namespace coursework_project
                 case 2:
                     {
                         Talk_to_Room1_Goblin();
-
+                        break;
+                    }
+                case 3:
+                    {
+                        Visually_Inspect_Room(room1_desc_filepath);
+                        break;
+                    }
+                case 4:
+                    {
+                        Search_The_Room();
                         break;
                     }
             }
-
-        
     }
 
         private static void Talk_to_Room1_Goblin()
@@ -60,7 +76,6 @@ namespace coursework_project
             
             List<string> goblin_options = new List<string>();
             goblin_options.Add("Return to Dave");
-
 
 
             if (Goblin_Room1.Check_if_Spoken_To() == false)
@@ -77,6 +92,57 @@ namespace coursework_project
             }
             Game_Display.display_screen("");
             Room1_Entry();
+        }
+
+        private static void Visually_Inspect_Room(string filepath)
+        {
+            Room1.get_description(filepath);
+            Game_Display.display_screen("");
+            Room1_Entry();
+        }
+        private static void Search_The_Room()
+        {
+            List<string> search_room_options = new List<string>();
+            search_room_options.Add("try to open it");
+            search_room_options.Add("Return to Dave");
+
+            //artwork from https://emojicombos.com/locked-chest accessed 11/01/25
+            List<string> chest_art = File_Load.Load_image("graphics/chest.txt");
+
+            //artwork from https://www.asciiart.eu/weapons/swords accessed 11/01/25
+            List<string> sword_art = File_Load.Load_image("graphics/sword.txt");
+
+            Display_text_func.Display_Text_with_Art("There isn't much of note in the room, however you do notice a rather old looking chest.", "", chest_art);
+
+            int search_choice = Menu_Call_Func.Display_Main_with_Question(search_room_options);
+
+            switch (search_choice)
+            {
+                case 1:
+                    {
+                        if (Chest.Check_If_Opened() == false)
+                        {
+                            Display_text_func.Display_Text_with_Art("A sword! Maybe this will show the goblin what's up. and some kind of weird red liquid in a bottle. Hopefully it will make me feel better if I drink it...", "" , sword_art);
+                        }
+                        Interact_With_Chest();
+                        break;
+                    }
+                case 2:
+                    {
+                        Game_Display.display_screen("");
+                        Room1_Entry();
+                        break;
+
+                    }
+            }
+
+        }
+        private static void Interact_With_Chest()
+        {
+            List<string> chest_options = new List<string>();
+
+
+
         }
 
     }
