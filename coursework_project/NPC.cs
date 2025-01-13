@@ -8,6 +8,9 @@ namespace coursework_project
         [JsonInclude]
         private bool spoken_to = false;
 
+        public NPC() 
+        { }
+
         public void Give_Name(string name)
         {
             this.name = name;

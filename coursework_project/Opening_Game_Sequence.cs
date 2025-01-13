@@ -8,6 +8,8 @@ namespace coursework_project
 
         static public void Opening()
         {
+
+
             Display_Text_From_File.Read_Text("enviromental_desc/opening1.txt", Program.no_art_list);
 
 

@@ -9,6 +9,9 @@ namespace coursework_project
         private bool entered_previously = false;
         private string entry_description;
 
+        public Room()
+        { }
+
         public void enter_room()
         {
             this.entered_previously = true;

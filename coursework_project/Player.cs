@@ -17,6 +17,9 @@ namespace coursework_project
         private List<Item> inventory = new List<Item>();
         [JsonIgnore]
         private int occupying_room_number;
+
+        public Player()
+        { }
         
         public void Regen_Health(float amount)
         {

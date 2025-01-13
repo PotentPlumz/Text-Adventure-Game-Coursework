@@ -43,6 +43,9 @@ namespace coursework_project
             Console.CursorVisible = false;
 
             Set_Player_Name();
+            Create_Non_Save_Classes();
+            Create_Saveable_Classes_With_Default_Values();
+
             Save_Game();
         }
 
@@ -148,9 +151,11 @@ namespace coursework_project
                 if (reader[0].Length == 0)
                     continue;
 
-                savegame_dictionary[reader[0]] = reader[1];
+                savegame_dictionary.Add(reader[0], reader[1]);
             }
-
+            Room1 = JsonSerializer.Deserialize<Room>(savegame_dictionary["room1"]);
+            Program.current_player = JsonSerializer.Deserialize<Player>(savegame_dictionary["player"]);
+            Chest1 = JsonSerializer.Deserialize<Storage>(savegame_dictionary["chest1"]);
         }
 
     }

@@ -15,6 +15,9 @@ namespace coursework_project
         [JsonInclude]
         public float health;
 
+        public Enemy()
+        { }
+
         public void regen_health(float amount)
         {
             this.health += amount;

@@ -11,7 +11,8 @@ namespace coursework_project
         [JsonInclude]
         private bool opened_previously;
 
-
+        public Storage()
+        { }
         public void Set_Name(string name)
         {
             this.name = name;

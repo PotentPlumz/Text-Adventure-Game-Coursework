@@ -8,6 +8,9 @@ namespace coursework_project
         private int base_damage;
         private string description;
         private int base_health_recovery;
+        
+        public Item() 
+        { }
 
         public void Set_Name(string name)
         {

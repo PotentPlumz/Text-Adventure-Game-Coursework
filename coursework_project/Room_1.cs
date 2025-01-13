@@ -78,6 +78,7 @@ namespace coursework_project
             Game_Saves.Room1.get_description(filepath);
             Game_Display.display_screen("");
             Room1_Entry();
+            Game_Saves.Save_Game();
         }
         private static void Search_The_Room()
         {
