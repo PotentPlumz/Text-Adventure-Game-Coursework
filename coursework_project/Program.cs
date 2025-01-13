@@ -14,7 +14,7 @@
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             File_Load.Check_files_proceedure();
-            File_Load.main_menu_music.Play();
+
 
    
 
@@ -23,29 +23,18 @@
 
 
             //New game starts here 
-           // Opening_Game_Sequence.Opening();
+            Opening_Game_Sequence.Opening();
             Room1_Program.Room1_Entry();
 
-
-
-
-
-
-
-
-
-
-
-
-
             Display_text_func.Display_Text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh", Program.current_player.Get_Name());
-
         }
         static public void welcome_main_menu()
         {
             Main_Menu.set_options_from_config();
             Main_Menu.welcome_screen();
             Main_Menu.call_main_menu();
+
+
         }
     }
 }

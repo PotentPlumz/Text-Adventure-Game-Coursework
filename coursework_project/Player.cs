@@ -18,7 +18,6 @@ namespace coursework_project
         [JsonIgnore]
         private int occupying_room_number;
         
-
         public void Regen_Health(float amount)
         {
             this.health += amount;

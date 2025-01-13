@@ -6,32 +6,8 @@ namespace coursework_project
 {
     internal class Room1_Program
     {
-        public static Room Room1 = new Room();
-        public static NPC Goblin_Room1 = new NPC();
-        public static Storage Chest = new Storage();
-        public static Item Sword = new Item();
-        public static Item Health_Potion = new Item();
-
-
         public static void Room1_Entry()
         {
-            Program.current_player.Set_Player_Location(1);
-
-            Sword.Set_Name("Rugged Sword");
-            Sword.Set_Base_Damage(8);
-
-            Health_Potion.Set_Name("Health Potion");
-            Health_Potion.Set_Base_Health_Recovery(25);
-
-            Chest.Set_Name("Drawer");
-            Chest.Put_Item_In(Sword);
-            Chest.Put_Item_In(Health_Potion);
-
-            Room1.set_name("Basement");
-
-
-            Goblin_Room1.Give_Name("Goblin");
-
             Room1_Main_Menu();
         }
         private static void Room1_Main_Menu()
@@ -81,11 +57,11 @@ namespace coursework_project
             goblin_options.Add("Return to Dave");
 
 
-            if (Goblin_Room1.Check_if_Spoken_To() == false)
+            if (Game_Saves.Goblin_Room1.Check_if_Spoken_To() == false)
             {
                 Display_Text_From_File.Read_Text("char_dialogue/goblin_room1_approach.txt", Program.no_art_list);
                 Display_Text_From_File.Read_Text("char_dialogue/goblin_room1_intro.txt", goblin_art);
-                Goblin_Room1.Speak_To();
+                Game_Saves.Goblin_Room1.Speak_To();
             }
             else
             {
@@ -99,7 +75,7 @@ namespace coursework_project
 
         private static void Visually_Inspect_Room(string filepath)
         {
-            Room1.get_description(filepath);
+            Game_Saves.Room1.get_description(filepath);
             Game_Display.display_screen("");
             Room1_Entry();
         }
@@ -123,7 +99,7 @@ namespace coursework_project
             {
                 case 1:
                     {
-                        if (Chest.Check_If_Opened() == false)
+                        if (Game_Saves.Chest1.Check_If_Opened() == false)
                         {
                             Display_text_func.Display_Text_with_Art("A sword! Maybe this will show the goblin what's up. and some kind of weird red liquid in a bottle. Hopefully it will make me feel better if I drink it...", "" , sword_art);
                         }
@@ -138,11 +114,10 @@ namespace coursework_project
 
                     }
             }
-
         }
         private static void Interact_With_Chest()
         {
-            List<Item> chest_contents = Chest.Get_Contents();
+            List<Item> chest_contents = Game_Saves.Chest1.Get_Contents();
 
             List<string> chest_options = new List<string>();
             chest_options.Add("Return to Dave");
@@ -164,16 +139,16 @@ namespace coursework_project
                     }
                 case 2:
                     {
-                        if (Chest.Get_Contents().Count == 2)
-                            Item_Transfer(Sword);
+                        if (Game_Saves.Chest1.Get_Contents().Count == 2)
+                            Item_Transfer(Game_Saves.Sword1);
 
-                        if (Chest.Get_Contents().Count == 1)
-                            Item_Transfer(Health_Potion);
+                        if (Game_Saves.Chest1.Get_Contents().Count == 1)
+                            Item_Transfer(Game_Saves.Health_Potion);
                         break;
                     }
                 case 3:
                     {
-                        Item_Transfer(Health_Potion);
+                        Item_Transfer(Game_Saves.Health_Potion);
                         break;
                     }
             }
@@ -181,7 +156,7 @@ namespace coursework_project
         private static void Item_Transfer(Item item)
         {
             Program.current_player.Pickup_Item(item);
-            Chest.Take_Item_Out(item);
+            Game_Saves.Chest1.Take_Item_Out(item);
             Game_Display.display_screen("");
             Display_text_func.rollout_text("You just picked up " + item.Get_Name() + ".");
             Thread.Sleep(1000);

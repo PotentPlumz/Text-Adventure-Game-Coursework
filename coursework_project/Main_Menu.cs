@@ -17,6 +17,7 @@
         static public void call_main_menu()
         {
             Console.CursorVisible = false;
+            File_Load.main_menu_music.Play();
 
             //List of menu options 
             List<string> main_menu_options = new List<string>();
@@ -52,10 +53,10 @@
             switch (main_selection)
             {
                 case 1:
-                    New_Game.commence_new_game();
+                    Game_Saves.commence_new_game();
                     break;
                 case 2:
-
+                    Game_Saves.Load_Game();
                     break;
                 case 3:
                     options_function(options_menu, scroll_speeds);

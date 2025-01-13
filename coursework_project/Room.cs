@@ -5,6 +5,7 @@ namespace coursework_project
     internal class Room
     {
         private string name;
+        [JsonInclude]
         private bool entered_previously = false;
         private string entry_description;
 
