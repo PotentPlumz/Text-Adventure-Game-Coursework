@@ -25,12 +25,10 @@ namespace coursework_project
         public void Put_Item_In(Item itemtobeputin)
         {
             this.contents.Add(itemtobeputin);
-            Program.current_player.Drop_Item(itemtobeputin);
         }
         public void Take_Item_Out(Item itemtotakenout)
         {
             this.contents.Remove(itemtotakenout);
-            Program.current_player.Pickup_Item(itemtotakenout);
         }
         public bool Check_If_Opened()
         {

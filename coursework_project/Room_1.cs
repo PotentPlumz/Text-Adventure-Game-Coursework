@@ -8,6 +8,8 @@ namespace coursework_project
     {
         public static void Room1_Entry()
         {
+            Console.Clear();
+            Game_Display.display_screen("");
             Room1_Main_Menu();
         }
         private static void Room1_Main_Menu()
@@ -75,10 +77,11 @@ namespace coursework_project
 
         private static void Visually_Inspect_Room(string filepath)
         {
+            Game_Saves.Save_Game();
             Game_Saves.Room1.get_description(filepath);
             Game_Display.display_screen("");
             Room1_Entry();
-            Game_Saves.Save_Game();
+
         }
         private static void Search_The_Room()
         {
@@ -104,6 +107,7 @@ namespace coursework_project
                         {
                             Display_text_func.Display_Text_with_Art("A sword! Maybe this will show the goblin what's up. and some kind of weird red liquid in a bottle. Hopefully it will make me feel better if I drink it...", "" , sword_art);
                         }
+                        Game_Saves.Chest1.Mark_As_Opened();
                         Interact_With_Chest();
                         break;
                     }
@@ -125,7 +129,7 @@ namespace coursework_project
 
             foreach (Item item in chest_contents)
             {
-                chest_options.Add("Pick up " + item.Get_Name());
+                chest_options.Add("Pick up: " + item.Get_Name());
             }
 
             int chest_choice = Menu_Call_Func.Display_Main_with_Question(chest_options);
@@ -141,23 +145,23 @@ namespace coursework_project
                 case 2:
                     {
                         if (Game_Saves.Chest1.Get_Contents().Count == 2)
-                            Item_Transfer(Game_Saves.Sword1);
+                            Item_Transfer(Game_Saves.Sword1, Game_Saves.Chest1);
 
                         if (Game_Saves.Chest1.Get_Contents().Count == 1)
-                            Item_Transfer(Game_Saves.Health_Potion);
+                            Item_Transfer(Game_Saves.Health_Potion, Game_Saves.Chest1);
                         break;
                     }
                 case 3:
                     {
-                        Item_Transfer(Game_Saves.Health_Potion);
+                        Item_Transfer(Game_Saves.Health_Potion, Game_Saves.Chest1);
                         break;
                     }
             }
         }
-        private static void Item_Transfer(Item item)
+        public static void Item_Transfer(Item item, Storage container)
         {
             Program.current_player.Pickup_Item(item);
-            Game_Saves.Chest1.Take_Item_Out(item);
+            container.Take_Item_Out(item);
             Game_Display.display_screen("");
             Display_text_func.rollout_text("You just picked up " + item.Get_Name() + ".");
             Thread.Sleep(1000);

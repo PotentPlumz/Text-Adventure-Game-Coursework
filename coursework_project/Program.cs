@@ -26,7 +26,7 @@
             Opening_Game_Sequence.Opening();
             Room1_Program.Room1_Entry();
 
-            Display_text_func.Display_Text("Hello ffgfdghfdghfdfghfdfgsfdfghsdfusdgfdfsdfhjsdfghfghfdghsfdhfsdhfsdghfgdh", Program.current_player.Get_Name());
+           
         }
         static public void welcome_main_menu()
         {

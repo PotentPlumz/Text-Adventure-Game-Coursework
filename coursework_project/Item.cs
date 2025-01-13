@@ -4,6 +4,7 @@ namespace coursework_project
 {
     internal class Item
     {
+        [JsonInclude]
         private string name;
         private int base_damage;
         private string description;

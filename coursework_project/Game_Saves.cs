@@ -79,9 +79,7 @@ namespace coursework_project
         {
             StreamWriter save_game_file = new StreamWriter("save_games/" + Program.current_player.Get_Name() + ".JSON");
 
-           // Dictionary<string, string> savegame_dictionary = new Dictionary<string, string>();
-
-            //Creates all of the string to be saved using the default values from the new game
+            //Creates all of the string to be saved
             string player_save = JsonSerializer.Serialize(Program.current_player);
             string room1_save = JsonSerializer.Serialize(Room1);
             string chest1_save = JsonSerializer.Serialize(Chest1);
@@ -132,7 +130,7 @@ namespace coursework_project
                 Program.welcome_main_menu();
             }
 
-            int save_list_index = user_loadgame_selection - 2;
+            int save_list_index = user_loadgame_selection - 1;
 
             string filename_to_load = ("save_games/" + load_game_filenames_list[save_list_index] + ".JSON");
 
@@ -156,6 +154,17 @@ namespace coursework_project
             Room1 = JsonSerializer.Deserialize<Room>(savegame_dictionary["room1"]);
             Program.current_player = JsonSerializer.Deserialize<Player>(savegame_dictionary["player"]);
             Chest1 = JsonSerializer.Deserialize<Storage>(savegame_dictionary["chest1"]);
+
+
+            //After loading in all of the data it will then load the appropriate proceedure for whatever room they were in 
+            switch (Program.current_player.Get_Player_Location())
+            {
+                case 1:
+                    {
+                        Room1_Program.Room1_Entry();
+                        break;
+                    }
+            }
         }
 
     }

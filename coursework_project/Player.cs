@@ -15,7 +15,7 @@ namespace coursework_project
         private float health = 15;
         [JsonInclude]
         private List<Item> inventory = new List<Item>();
-        [JsonIgnore]
+        [JsonInclude    ]
         private int occupying_room_number;
 
         public Player()
@@ -27,6 +27,10 @@ namespace coursework_project
 
             if (this.health > max_health)
                 this.health = max_health;
+        }
+        public int Get_Player_Location()
+        {
+            return this.occupying_room_number;
         }
         public void Set_Player_Location(int room_number)
         {
