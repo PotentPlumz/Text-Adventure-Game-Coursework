@@ -17,7 +17,7 @@
         static public void call_main_menu()
         {
             Console.CursorVisible = false;
-            File_Load.main_menu_music.Play();
+
 
             //List of menu options 
             List<string> main_menu_options = new List<string>();

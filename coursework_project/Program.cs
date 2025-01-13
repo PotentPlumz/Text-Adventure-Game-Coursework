@@ -30,6 +30,7 @@
         }
         static public void welcome_main_menu()
         {
+            File_Load.main_menu_music.Play();
             Main_Menu.set_options_from_config();
             Main_Menu.welcome_screen();
             Main_Menu.call_main_menu();

@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Reflection.PortableExecutable;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace coursework_project
@@ -99,12 +100,27 @@ namespace coursework_project
             List<string> load_game_filenames_list = new List<string>();
             load_game_filenames_list.Add("Return to Main Menu");
             
+
+            //This gets rid of the folder directory and .JSON from the end and just leaves the character name
             foreach (string filename in load_game_filenames_array)
-                load_game_filenames_list.Add(filename);
+            {
+                string[] first_split = filename.Split("/");
+                string[] second_split = first_split[1].Split('.');
+                load_game_filenames_list.Add(second_split[0]);
+            }
+            if (load_game_filenames_list.Count < 2)
+            {
+                Display_text_func.rollout_text("Sorry, no save game files found.");
+                Thread.Sleep(1500);
+                Console.Clear();
+                Program.welcome_main_menu();
+            }
 
-
-            Display_text_func.rollout_text("Please select a save game to load:");
-            Console.WriteLine("\n");
+            Console.Clear();
+            Display_text_func.rollout_text("Please select a save game to load:\n");
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine();
+    
             int user_loadgame_selection = Menu_Call_Func.Display_Menu(load_game_filenames_list);
 
             if (user_loadgame_selection == 1)
@@ -113,9 +129,27 @@ namespace coursework_project
                 Program.welcome_main_menu();
             }
 
+            int save_list_index = user_loadgame_selection - 2;
 
+            string filename_to_load = ("save_games/" + load_game_filenames_list[save_list_index] + ".JSON");
 
+            Load_Game_From_File(filename_to_load);
+        }
 
+        private static void Load_Game_From_File(string filename)
+        {
+            StreamReader save_to_load = new StreamReader(filename);
+            Dictionary<string, string> savegame_dictionary = new Dictionary<string, string>();
+            string[] reader;
+
+            while (!save_to_load.EndOfStream)
+            {
+                reader = save_to_load.ReadLine().Split("=");
+                if (reader[0].Length == 0)
+                    continue;
+
+                savegame_dictionary[reader[0]] = reader[1];
+            }
 
         }
 
