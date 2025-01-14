@@ -53,7 +53,7 @@
             switch (main_selection)
             {
                 case 1:
-                    Game_Saves.commence_new_game();
+                    Game_Saves.Commence_New_Game();
                     break;
                 case 2:
                     Game_Saves.Load_Game();

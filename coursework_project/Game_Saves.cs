@@ -37,7 +37,7 @@ namespace coursework_project
             Chest1.Put_Item_In(Health_Potion);
 
         }
-        static public void commence_new_game()
+        static public void Commence_New_Game()
         {
             File_Load.main_menu_music.Stop();
             Console.CursorVisible = false;
@@ -98,10 +98,17 @@ namespace coursework_project
 
 
             string[] load_game_filenames_array = Directory.GetFiles("save_games/");
+            if (load_game_filenames_array.Count() == 0)
+            {
+                Display_text_func.rollout_text("Sorry, no save game files found.");
+                Thread.Sleep(1500);
+                Console.Clear();
+                Program.welcome_main_menu();
+            }
+
             List<string> load_game_filenames_list = new List<string>();
             load_game_filenames_list.Add("Return to Main Menu");
             
-
             //This gets rid of the folder directory and .JSON from the end and just leaves the character name
             foreach (string filename in load_game_filenames_array)
             {
@@ -109,13 +116,7 @@ namespace coursework_project
                 string[] second_split = first_split[1].Split('.');
                 load_game_filenames_list.Add(second_split[0]);
             }
-            if (load_game_filenames_list.Count < 2)
-            {
-                Display_text_func.rollout_text("Sorry, no save game files found.");
-                Thread.Sleep(1500);
-                Console.Clear();
-                Program.welcome_main_menu();
-            }
+
 
             Console.Clear();
             Display_text_func.rollout_text("Please select a save game to load:\n");
@@ -129,12 +130,14 @@ namespace coursework_project
                 Console.Clear();
                 Program.welcome_main_menu();
             }
+            else
+            {
+                int save_list_index = user_loadgame_selection - 1;
 
-            int save_list_index = user_loadgame_selection - 1;
+                string filename_to_load = ("save_games/" + load_game_filenames_list[save_list_index] + ".JSON");
 
-            string filename_to_load = ("save_games/" + load_game_filenames_list[save_list_index] + ".JSON");
-
-            Load_Game_From_File(filename_to_load);
+                Load_Game_From_File(filename_to_load);
+            }
         }
 
         private static void Load_Game_From_File(string filename)
