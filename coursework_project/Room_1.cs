@@ -144,10 +144,10 @@ namespace coursework_project
                     }
                 case 2:
                     {
-                        if (Game_Saves.Chest1.Get_Contents().Count == 2)
+                        
+                        if (Game_Saves.Chest1.Get_Contents().Contains(Game_Saves.Sword1))
                             Item_Transfer(Game_Saves.Sword1, Game_Saves.Chest1);
-
-                        if (Game_Saves.Chest1.Get_Contents().Count == 1)
+                        else
                             Item_Transfer(Game_Saves.Health_Potion, Game_Saves.Chest1);
                         break;
                     }

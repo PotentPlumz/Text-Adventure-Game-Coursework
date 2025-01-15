@@ -158,6 +158,7 @@ namespace coursework_project
             Program.current_player = JsonSerializer.Deserialize<Player>(savegame_dictionary["player"]);
             Chest1 = JsonSerializer.Deserialize<Storage>(savegame_dictionary["chest1"]);
 
+            save_to_load.Close();
 
             //After loading in all of the data it will then load the appropriate proceedure for whatever room they were in 
             switch (Program.current_player.Get_Player_Location())
