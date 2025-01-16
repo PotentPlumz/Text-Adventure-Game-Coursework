@@ -60,5 +60,12 @@ namespace coursework_project
             int choice = Display_Menu(menu);
             return choice;
         }
+        public static int Display_Main_With_Custom_String(List<string> menu, string text)
+        {
+            Display_text_func.Display_Menu_Guide("What would you like to do?\n" + text);
+            Console.WriteLine("\n");
+            int choice = Display_Menu(menu);
+            return choice;
+        }
     }
 }

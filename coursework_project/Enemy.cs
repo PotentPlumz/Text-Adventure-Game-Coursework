@@ -7,9 +7,9 @@ namespace coursework_project
         [JsonInclude]
         private string name;
         [JsonInclude]
-        private float damage1;
+        private int damage1;
         [JsonInclude]
-        private float damage2;
+        private int damage2;
         [JsonInclude]
         private bool is_alive = true;
         [JsonInclude]
@@ -18,6 +18,19 @@ namespace coursework_project
         public Enemy()
         { }
 
+        public string Get_Name()
+        {
+            return name;
+        }
+        public void Set_Name(string name)
+        {
+            this.name = name;
+        }
+        public void Set_Damages(int  damage1, int damage2)
+        {
+            this.damage1 = damage1;
+            this.damage2 = damage2;
+        }
         public void Regen_Health(float amount)
         {
             this.health += amount;
@@ -40,6 +53,14 @@ namespace coursework_project
         public void Commence_Attack()
         {
 
+        }
+        public int Get_Damage_1_type()
+        {
+            return this.damage1;
+        }
+        public int Get_Damage_2_type()
+        {
+            return this.damage2;
         }
     }
 }

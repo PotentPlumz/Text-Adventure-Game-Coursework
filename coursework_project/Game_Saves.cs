@@ -7,6 +7,7 @@ namespace coursework_project
     internal class Game_Saves
     {
         public static Room Room1 = new Room();
+        public static Room Room2 = new Room();
         public static NPC Goblin_Room1 = new NPC();
         public static Storage Chest1 = new Storage();
         public static Item Sword1 = new Item();
@@ -29,6 +30,9 @@ namespace coursework_project
             Room1.set_name("Basement");
 
             Goblin_Room1.Give_Name("Goblin");
+
+            Goblin_Room2.Set_Name("Goblin");
+            Goblin_Room2.Set_Damages(8, 10);
 
         }
         static public void Create_Saveable_Classes_With_Default_Values()

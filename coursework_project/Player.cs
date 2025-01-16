@@ -12,7 +12,7 @@ namespace coursework_project
         [JsonInclude]
         private int max_health = 50;
         [JsonInclude]
-        private float health = 15;
+        private int health = 15;
         [JsonInclude]
         private List<Item> inventory = new List<Item>();
         [JsonInclude]
@@ -21,7 +21,7 @@ namespace coursework_project
         public Player()
         { }
 
-        public void Regen_Health(float amount)
+        public void Regen_Health(int amount)
         {
             this.health += amount;
 
@@ -37,7 +37,7 @@ namespace coursework_project
             this.occupying_room_number = room_number;
         }
 
-        public void Take_Damage(float amount)
+        public void Take_Damage(int amount)
         {
             this.health -= amount;
             if (this.health <= 0)
@@ -52,14 +52,21 @@ namespace coursework_project
         {
             return this.name;
         }
-
-        public bool Check_Health()
+        public float Check_Health()
+        {
+            return this.health;
+        }
+        public bool Check_If_Alive()
         {
             if (this.health <= 0)
             {
                 this.is_alive = false;
             }
             return this.is_alive;
+        }
+        public int Check_Max_Health()
+        {
+            return this.max_health;
         }
 
         public void Pickup_Item(Item item)

@@ -29,6 +29,14 @@ namespace coursework_project
         {
             this.base_damage = base_damage;
         }
+        public int Get_Base_Damage()
+        {
+            return this.base_damage;
+        }
+        public int Get_Health_Recovery()
+        {
+            return this.base_health_recovery;
+        }
         public void Set_Description(string description)
         {
             this.description = description;
