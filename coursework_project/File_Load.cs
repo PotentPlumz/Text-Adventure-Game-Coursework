@@ -10,7 +10,8 @@ namespace coursework_project
 
         public static int scroll_speed = 0;
 
-        public static SoundPlayer main_menu_music;
+        public static SoundPlayer sound_main_menu_music;
+        public static SoundPlayer sound_death_scream;
 
         static public void Check_files_proceedure()
         {
@@ -24,10 +25,14 @@ namespace coursework_project
                 StreamReader config_file = new StreamReader("config.txt");
                 config_file.Close();
 
-                //Sound files 
-                //Make sure to follow copyright laws and credit the authors for the Asc key art and sounds/music
-                main_menu_music = new SoundPlayer("sound_files/main_menu_music.wav");
-                sound_check(main_menu_music);
+                //Sound files
+
+                //Main menu music = Kevin Macloed - Impact Prelude accessed 16/01 https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100617&Search=Search
+                sound_main_menu_music = new SoundPlayer("sound_files/main_menu_music.wav");
+                sound_check(sound_main_menu_music);
+
+                sound_death_scream = new SoundPlayer("sound_files/wilhelm_scream.wav");
+                sound_check(sound_death_scream);
 
                 //Enviro files
                 StreamReader opening = new StreamReader("enviromental_desc/opening1.txt");

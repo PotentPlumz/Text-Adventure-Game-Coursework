@@ -11,10 +11,12 @@ namespace coursework_project
         public static Storage Chest1 = new Storage();
         public static Item Sword1 = new Item();
         public static Item Health_Potion = new Item();
+        public static Enemy Goblin_Room2 = new Enemy();
 
 
         static public void Create_Non_Save_Classes()
         {
+            Goblin_Room2.Set_Max_Health(25);
 
             Sword1.Set_Name("Rugged Sword");
             Sword1.Set_Base_Damage(8);
@@ -39,7 +41,7 @@ namespace coursework_project
         }
         static public void Commence_New_Game()
         {
-            File_Load.main_menu_music.Stop();
+            File_Load.sound_main_menu_music.Stop();
             Console.CursorVisible = false;
 
             Set_Player_Name();
@@ -47,6 +49,9 @@ namespace coursework_project
             Create_Saveable_Classes_With_Default_Values();
 
             Save_Game();
+
+            Opening_Game_Sequence.Opening();
+            Room1_Program.Room1_Entry();
         }
 
         static public void Set_Player_Name()
@@ -83,10 +88,12 @@ namespace coursework_project
             string player_save = JsonSerializer.Serialize(Program.current_player);
             string room1_save = JsonSerializer.Serialize(Room1);
             string chest1_save = JsonSerializer.Serialize(Chest1);
+            string goblin_npc_1 = JsonSerializer.Serialize(Goblin_Room1);
 
             save_game_file.WriteLine("player=" + player_save);
             save_game_file.WriteLine("room1=" + room1_save);
             save_game_file.WriteLine("chest1=" +  chest1_save);
+            save_game_file.WriteLine("goblin_room1=" + goblin_npc_1);
 
             save_game_file.Close();
         }
@@ -94,7 +101,7 @@ namespace coursework_project
         {
             Console.WriteLine();
 
-            File_Load.main_menu_music.Stop();
+            File_Load.sound_main_menu_music.Stop();
 
 
             string[] load_game_filenames_array = Directory.GetFiles("save_games/");
@@ -155,6 +162,7 @@ namespace coursework_project
                 savegame_dictionary.Add(reader[0], reader[1]);
             }
             Room1 = JsonSerializer.Deserialize<Room>(savegame_dictionary["room1"]);
+            Goblin_Room1 = JsonSerializer.Deserialize<NPC>(savegame_dictionary["goblin_room1"]);
             Program.current_player = JsonSerializer.Deserialize<Player>(savegame_dictionary["player"]);
             Chest1 = JsonSerializer.Deserialize<Storage>(savegame_dictionary["chest1"]);
 

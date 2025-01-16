@@ -7,6 +7,8 @@ namespace coursework_project
         private string name;
         [JsonInclude]
         private bool spoken_to = false;
+        [JsonInclude]
+        private bool cleared = false;
 
         public NPC() 
         { }
@@ -23,7 +25,14 @@ namespace coursework_project
         {
             return this.spoken_to;
         }
-        
+        public bool check_if_cleared()
+        {
+            return cleared;
+        }
+        public void clear()
+        {
+            this.cleared = true;
+        }
 
 
     }

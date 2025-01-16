@@ -1,4 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System.Media;
 using System.Text.Json.Serialization;
 
 namespace coursework_project
@@ -15,12 +15,12 @@ namespace coursework_project
         private float health = 15;
         [JsonInclude]
         private List<Item> inventory = new List<Item>();
-        [JsonInclude    ]
+        [JsonInclude]
         private int occupying_room_number;
 
         public Player()
         { }
-        
+
         public void Regen_Health(float amount)
         {
             this.health += amount;
@@ -71,6 +71,58 @@ namespace coursework_project
         {
             this.inventory.Remove(item);
         }
+        public List<Item> Check_Inventory()
+        {
+            return this.inventory;
+        }
+        public void Check_Player_Death_and_Play_Scream()
+        {
+            if (!this.is_alive)
+            {
+                this.Death_Screen();
+
+            }
+        }
+        public void Death_Screen()
+        {
+            File_Load.sound_death_scream.Play();
+
+            List<string> death_options = new List<string>();
+            death_options.Add("New Game");
+            death_options.Add("Load Game");
+            death_options.Add("Return to Main Menu");
+
+            Console.Clear();
+
+
+            Console.WriteLine("GAME OVER");
+
+
+            Console.WriteLine("---------");
+
+            int death_choice = Menu_Call_Func.Display_Menu(death_options);
+
+            switch (death_choice)
+            {
+                case 1:
+                    {
+                        Game_Saves.Commence_New_Game();
+                        break;
+                    }
+                case 2:
+                    {
+                        Game_Saves.Load_Game();
+                        break;
+                    }
+                case 3:
+                    {
+                        Program.welcome_main_menu();
+                        break;
+                    }
+
+            }
+        }
     }
 }
+
 

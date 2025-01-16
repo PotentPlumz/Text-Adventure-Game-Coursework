@@ -5,29 +5,41 @@ namespace coursework_project
     internal class Enemy
     {
         [JsonInclude]
-        public string name;
+        private string name;
         [JsonInclude]
-        public float damage1;
+        private float damage1;
         [JsonInclude]
-        public float damage2;
+        private float damage2;
         [JsonInclude]
-        public bool is_alive = true;
+        private bool is_alive = true;
         [JsonInclude]
-        public float health;
+        private float health;
 
         public Enemy()
         { }
 
-        public void regen_health(float amount)
+        public void Regen_Health(float amount)
         {
             this.health += amount;
 
         }
-        public void take_damage(float amount)
+        public void Take_Damage(float amount)
         {
             this.health -= amount;
             if (this.health <= 0)
                 this.is_alive = false;
+        }
+        public void Set_Max_Health(float amount)
+        {
+            this.health = amount;
+        }
+        public bool Check_If_Alive()
+        {
+            return this.is_alive;
+        }
+        public void Commence_Attack()
+        {
+
         }
     }
 }

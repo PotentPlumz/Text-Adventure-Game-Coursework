@@ -18,19 +18,17 @@
 
    
 
-            //List of all the main menu options
-            welcome_main_menu();
+           welcome_main_menu();
 
 
-            //New game starts here 
-            Opening_Game_Sequence.Opening();
-            Room1_Program.Room1_Entry();
+
+
 
            
         }
         static public void welcome_main_menu()
         {
-            File_Load.main_menu_music.Play();
+            File_Load.sound_main_menu_music.Play();
             Main_Menu.set_options_from_config();
             Main_Menu.welcome_screen();
             Main_Menu.call_main_menu();

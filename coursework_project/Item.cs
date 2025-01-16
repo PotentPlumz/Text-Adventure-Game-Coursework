@@ -6,8 +6,11 @@ namespace coursework_project
     {
         [JsonInclude]
         private string name;
+        [JsonInclude]
         private int base_damage;
+        [JsonInclude]
         private string description;
+        [JsonInclude]
         private int base_health_recovery;
         
         public Item() 

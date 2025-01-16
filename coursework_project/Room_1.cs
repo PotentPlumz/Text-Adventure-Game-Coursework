@@ -18,7 +18,15 @@ namespace coursework_project
 
             List<String> Room1_options = new List<string>();
             Room1_options.Add("Speak to Dave");
-            Room1_options.Add("Approch the figure");
+            if (Game_Saves.Goblin_Room1.check_if_cleared() == false)
+            {
+                Room1_options.Add("Approch the figure");
+            }
+            else
+            {
+                Room1_options.Add("Approch the door");
+            }
+
             Room1_options.Add("Visually inspect the room");
             Room1_options.Add("Search the room");
 
@@ -35,7 +43,11 @@ namespace coursework_project
                     }
                 case 2:
                     {
-                        Talk_to_Room1_Goblin();
+                        if (Game_Saves.Goblin_Room1.check_if_cleared() == false)
+                            Talk_to_Room1_Goblin();
+                        else
+                            Room_2_Options();
+
                         break;
                     }
                 case 3:
@@ -54,9 +66,16 @@ namespace coursework_project
         private static void Talk_to_Room1_Goblin()
         {
             List<string> goblin_art = File_Load.Load_image("graphics/goblin.txt");
+            int talking_to_goblin_choice;
             
             List<string> goblin_options = new List<string>();
             goblin_options.Add("Return to Dave");
+
+            if (Program.current_player.Check_Inventory().Contains(Game_Saves.Sword1))
+            {
+                goblin_options.Add("Brandish your sword");
+            }
+
 
 
             if (Game_Saves.Goblin_Room1.Check_if_Spoken_To() == false)
@@ -68,16 +87,32 @@ namespace coursework_project
             else
             {
                 Display_text_func.Display_Text_with_Art("What do you want now?", "goblin", goblin_art);
-                Menu_Call_Func.Display_Main_with_Question(goblin_options);
-
             }
-            Game_Display.display_screen("");
-            Room1_Entry();
+
+                talking_to_goblin_choice = Menu_Call_Func.Display_Main_with_Question(goblin_options);
+
+            
+            switch (talking_to_goblin_choice)
+            {
+                case 1:
+                    {
+                        Game_Display.display_screen("");
+                        Room1_Entry();
+                        break;
+                    }
+                case 2:
+                    {
+                        Game_Saves.Goblin_Room1.clear();
+                        Advance_to_Room_2();
+                        break;
+                    }
+            }
+
         }
 
         private static void Visually_Inspect_Room(string filepath)
         {
-            Game_Saves.Save_Game();
+
             Game_Saves.Room1.get_description(filepath);
             Game_Display.display_screen("");
             Room1_Entry();
@@ -167,6 +202,48 @@ namespace coursework_project
             Thread.Sleep(1000);
             Game_Display.display_screen("");
             Interact_With_Chest();
+        }
+        public static void Advance_to_Room_2()
+        {
+            List<string> goblin_art = File_Load.Load_image("graphics/goblin.txt");
+
+            Display_Text_From_File.Read_Text("char_dialogue/goblin_room1_move.txt", goblin_art);
+
+            Room_2_Options();
+        }
+        public static void Room_2_Options()
+        {
+            List<string> room_2_options = new List<string>();
+            room_2_options.Add("Return to Dave");
+            room_2_options.Add("Save Game");
+            room_2_options.Add("Advance to room 2");
+
+            int choice = Menu_Call_Func.Display_Main_with_Question(room_2_options);
+
+            switch (choice)
+            {
+                case 1:
+                    {
+                        Game_Display.display_screen("");
+                        Room1_Main_Menu();
+                        break;
+                    }
+                case 2:
+                    {
+                        Game_Saves.Save_Game();
+                        Display_text_func.rollout_text("Game sucessfully saved.");
+                        Thread.Sleep(1000);
+                        Room_2_Options();
+
+
+                        break;
+                    }
+                case 3:
+                    {
+                        Room2_Program.Room2_Entry();
+                        break;
+                    }
+            }
         }
 
     }
