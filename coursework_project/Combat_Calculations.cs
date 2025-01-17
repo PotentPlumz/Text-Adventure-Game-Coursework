@@ -10,7 +10,7 @@
 
             int modifier = get_Damage_Modifier();
 
-            recovery_amount *= modifier;
+            recovery_amount += modifier;
             return recovery_amount;
         }
         public static void Enemy_Turn(Enemy enemy)
@@ -22,7 +22,6 @@
 
             int base_damage;
 
-
             if (attack_choice == 1)
                 base_damage = enemy.Get_Damage_1_type();
 
@@ -31,6 +30,7 @@
 
             int total_damage = base_damage + modifier;
 
+            File_Load.sound_player_take_damage.Play();
             Display_text_func.Display_Text_Continued("The " + enemy.Get_Name() + " is going in for a " + $"{(attack_choice == 1 ? "Light " : "Heavy ")}" 
                 + "attack and just hit you for " + total_damage + " damage!");
 

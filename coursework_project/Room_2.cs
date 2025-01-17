@@ -11,6 +11,8 @@ namespace coursework_project
             Console.Clear();
             Game_Display.display_screen("");
             Game_Saves.Room2.get_description("enviromental_desc/room2_desc.txt");
+
+            Program.current_player.Set_Player_Location(2);
             
             
             if (Game_Saves.Goblin_Room2.Check_If_Alive() == true)
@@ -35,10 +37,6 @@ namespace coursework_project
             {
                 string health_message = ("Your current health is " + Program.current_player.Check_Health() + "/" + Program.current_player.Check_Max_Health());
 
-                if (!Program.current_player.Check_Inventory().Contains(Game_Saves.Health_Potion))
-                {
-                    combat_options.RemoveAt(1);
-                }
 
                 int user_choice = Menu_Call_Func.Display_Main_With_Custom_String(combat_options, health_message);
 
@@ -53,10 +51,14 @@ namespace coursework_project
                     case 2:
                         {
                             File_Load.sound_drink_potion.Play();
+                            combat_options.RemoveAt(1);
                             Consume_Health_Potion();
                             break;
                         }
                 }
+                if (!Game_Saves.Goblin_Room2.Check_If_Alive())
+                    continue;
+
                 Combat_Calculations.Enemy_Turn(Game_Saves.Goblin_Room2);
                 Program.current_player.Check_Player_Death_and_Play_Scream();
 

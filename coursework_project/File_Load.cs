@@ -15,6 +15,7 @@ namespace coursework_project
         public static SoundPlayer sound_combat_music;
         public static SoundPlayer sound_sword;
         public static SoundPlayer sound_drink_potion;
+        public static SoundPlayer sound_player_take_damage;
 
         static public void Check_files_proceedure()
         {
@@ -48,6 +49,10 @@ namespace coursework_project
                 //drink sound effect from Pixabay (freesound_community) accessed 17/01 https://pixabay.com/sound-effects/search/drinking/
                 sound_drink_potion = new SoundPlayer("sound_files/drink_potion.wav");
                 sound_check(sound_drink_potion);
+
+                //player take damage origional Minecraft take dagame sound effect accessed 17/01 - taken from https://www.myinstants.com/en/instant/minecraft-hurt/
+                sound_player_take_damage = new SoundPlayer("sound_files/take_damage.wav");
+                sound_check(sound_player_take_damage);
 
                 //Enviro files
                 StreamReader opening = new StreamReader("enviromental_desc/opening1.txt");
