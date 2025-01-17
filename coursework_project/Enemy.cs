@@ -13,7 +13,7 @@ namespace coursework_project
         [JsonInclude]
         private bool is_alive = true;
         [JsonInclude]
-        private float health;
+        private int health;
 
         public Enemy()
         { }
@@ -31,18 +31,18 @@ namespace coursework_project
             this.damage1 = damage1;
             this.damage2 = damage2;
         }
-        public void Regen_Health(float amount)
+        public void Regen_Health(int amount)
         {
             this.health += amount;
 
         }
-        public void Take_Damage(float amount)
+        public void Take_Damage(int amount)
         {
             this.health -= amount;
             if (this.health <= 0)
                 this.is_alive = false;
         }
-        public void Set_Max_Health(float amount)
+        public void Set_Max_Health(int amount)
         {
             this.health = amount;
         }
@@ -50,10 +50,7 @@ namespace coursework_project
         {
             return this.is_alive;
         }
-        public void Commence_Attack()
-        {
 
-        }
         public int Get_Damage_1_type()
         {
             return this.damage1;
@@ -61,6 +58,10 @@ namespace coursework_project
         public int Get_Damage_2_type()
         {
             return this.damage2;
+        }
+        public void Revive()
+        {
+            this.is_alive = true;
         }
     }
 }

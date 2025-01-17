@@ -12,6 +12,9 @@ namespace coursework_project
 
         public static SoundPlayer sound_main_menu_music;
         public static SoundPlayer sound_death_scream;
+        public static SoundPlayer sound_combat_music;
+        public static SoundPlayer sound_sword;
+        public static SoundPlayer sound_drink_potion;
 
         static public void Check_files_proceedure()
         {
@@ -31,8 +34,20 @@ namespace coursework_project
                 sound_main_menu_music = new SoundPlayer("sound_files/main_menu_music.wav");
                 sound_check(sound_main_menu_music);
 
+                //combat music = Kevin Macloed - Burn the World Waltz accessed 17/01 https://incompetech.com/music/royalty-free/music.html
+                sound_combat_music = new SoundPlayer("sound_files/combat_music.wav");
+                sound_check(sound_combat_music);
+
                 sound_death_scream = new SoundPlayer("sound_files/wilhelm_scream.wav");
                 sound_check(sound_death_scream);
+
+                //Sword sound effect from Pixabay (Cyberware-Orchestra) accessed 17/01 https://pixabay.com/sound-effects/search/sword/
+                sound_sword = new SoundPlayer("sound_files/sword_strike.wav");
+                sound_check(sound_sword);
+
+                //drink sound effect from Pixabay (freesound_community) accessed 17/01 https://pixabay.com/sound-effects/search/drinking/
+                sound_drink_potion = new SoundPlayer("sound_files/drink_potion.wav");
+                sound_check(sound_drink_potion);
 
                 //Enviro files
                 StreamReader opening = new StreamReader("enviromental_desc/opening1.txt");

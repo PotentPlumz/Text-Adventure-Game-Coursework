@@ -34,10 +34,16 @@ namespace coursework_project
             Goblin_Room2.Set_Name("Goblin");
             Goblin_Room2.Set_Damages(8, 10);
 
+            Program.current_player.Set_Max_Health(50);
         }
         static public void Create_Saveable_Classes_With_Default_Values()
         {
             Program.current_player.Set_Player_Location(1);
+            Program.current_player.Set_Health(15);
+            Program.current_player.Clear_Inventory();
+
+            Goblin_Room2.Revive();
+            Goblin_Room1.Unclear();
 
             Chest1.Put_Item_In(Sword1);
             Chest1.Put_Item_In(Health_Potion);

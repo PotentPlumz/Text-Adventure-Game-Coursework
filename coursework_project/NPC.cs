@@ -33,7 +33,10 @@ namespace coursework_project
         {
             this.cleared = true;
         }
-
+        public void Unclear()
+        {
+            this.cleared = false;
+        }
 
     }
 

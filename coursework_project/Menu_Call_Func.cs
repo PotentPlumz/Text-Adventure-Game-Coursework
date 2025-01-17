@@ -28,7 +28,7 @@ namespace coursework_project
                 //This is the code that loads all of the options contained in the inputted list and displayed them to the user
                 for (int i = 0;i < menu_to_display.Count;i++)
                 {
-                    Console.WriteLine($"{i+1}) {(menu_position == i+1 ? File_Load.red_text_colour : "")}{menu_to_display[i]}" + File_Load.default_colour_code);
+                    Console.WriteLine($"{i + 1}) {(menu_position == i + 1? File_Load.red_text_colour : "")}{menu_to_display[i]}" + File_Load.default_colour_code);
                 }
 
                 user_keypress = Console.ReadKey(true);

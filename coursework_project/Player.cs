@@ -1,4 +1,5 @@
-﻿using System.Media;
+﻿using System.Data;
+using System.Media;
 using System.Text.Json.Serialization;
 
 namespace coursework_project
@@ -10,17 +11,22 @@ namespace coursework_project
         [JsonInclude]
         private bool is_alive = true;
         [JsonInclude]
-        private int max_health = 50;
+        private int max_health;
         [JsonInclude]
-        private int health = 15;
+        private int health;
         [JsonInclude]
         private List<Item> inventory = new List<Item>();
         [JsonInclude]
         private int occupying_room_number;
 
         public Player()
-        { }
+        {       
+        }
 
+        public void Clear_Inventory()
+        {
+            this.inventory.Clear();
+        }
         public void Regen_Health(int amount)
         {
             this.health += amount;
@@ -52,9 +58,13 @@ namespace coursework_project
         {
             return this.name;
         }
-        public float Check_Health()
+        public int Check_Health()
         {
             return this.health;
+        }
+        public void Set_Health(int health)
+        {
+            this.health = health;
         }
         public bool Check_If_Alive()
         {
@@ -67,6 +77,10 @@ namespace coursework_project
         public int Check_Max_Health()
         {
             return this.max_health;
+        }
+        public void Set_Max_Health(int max_health)
+        {
+            this.max_health = max_health;
         }
 
         public void Pickup_Item(Item item)
@@ -123,6 +137,7 @@ namespace coursework_project
                     }
                 case 3:
                     {
+                        Console.Clear();
                         Program.welcome_main_menu();
                         break;
                     }

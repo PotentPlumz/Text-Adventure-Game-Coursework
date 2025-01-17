@@ -218,13 +218,15 @@ namespace coursework_project
             room_2_options.Add("Save Game");
             room_2_options.Add("Advance to room 2");
 
+            Game_Display.display_screen("");
+
             int choice = Menu_Call_Func.Display_Main_with_Question(room_2_options);
 
             switch (choice)
             {
                 case 1:
                     {
-                        Game_Display.display_screen("");
+ 
                         Room1_Main_Menu();
                         break;
                     }
