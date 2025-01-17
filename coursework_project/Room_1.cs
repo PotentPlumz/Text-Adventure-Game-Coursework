@@ -124,10 +124,8 @@ namespace coursework_project
             search_room_options.Add("try to open it");
             search_room_options.Add("Return to Dave");
 
-            //artwork from https://emojicombos.com/locked-chest accessed 11/01/25
             List<string> chest_art = File_Load.Load_image("graphics/chest.txt");
 
-            //artwork from https://www.asciiart.eu/weapons/swords accessed 11/01/25
             List<string> sword_art = File_Load.Load_image("graphics/sword.txt");
 
             Display_text_func.Display_Text_with_Art("There isn't much of note in the room, however you do notice a rather old looking chest.", "", chest_art);

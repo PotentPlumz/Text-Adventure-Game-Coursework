@@ -30,7 +30,6 @@ namespace coursework_project
                 config_file.Close();
 
                 //Sound files
-
                 //Main menu music = Kevin Macloed - Impact Prelude accessed 16/01 https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100617&Search=Search
                 sound_main_menu_music = new SoundPlayer("sound_files/main_menu_music.wav");
                 sound_check(sound_main_menu_music);
@@ -58,18 +57,52 @@ namespace coursework_project
                 StreamReader opening = new StreamReader("enviromental_desc/opening1.txt");
                 config_file.Close();
 
+                StreamReader ending = new StreamReader("enviromental_desc/ending.txt");
+                ending.Close();
+
+                StreamReader room1_desc = new StreamReader("enviromental_desc/room1_desc.txt");
+                room1_desc.Close();
+
+                StreamReader room2_desc = new StreamReader("enviromental_desc/room2_desc.txt");
+                room2_desc.Close();
+
                 //Char files
+                StreamReader dave_intro = new StreamReader("char_dialogue/dave_intro.txt");
+                dave_intro.Close();
+
+                StreamReader goblin_room1_approach = new StreamReader("char_dialogue/goblin_room1_approach.txt");
+                goblin_room1_approach.Close();
+
+                StreamReader goblin_room1_intro = new StreamReader("char_dialogue/goblin_room1_intro.txt");
+                goblin_room1_intro.Close();
+
+                StreamReader goblin_room1_move = new StreamReader("char_dialogue/goblin_room1_move.txt");
+                goblin_room1_move.Close();
+
+                StreamReader goblin_room2_opening = new StreamReader("char_dialogue/goblin_room2_opening.txt");
+                goblin_room2_opening.Close();
 
                 //artwork
                 //goblin artwork from https://ascii.co.uk/art/goblin accessed 08/01/25
                 StreamReader goblin_art = new StreamReader("graphics/goblin.txt");
                 goblin_art.Close();
 
+                StreamReader deathbox = new StreamReader("graphics/deathbox.txt");
+                deathbox.Close();
 
+                //chest artwork from https://emojicombos.com/locked-chest accessed 11/01/25
+                StreamReader chest = new StreamReader("graphics/chest.txt");
+                chest.Close();
+
+                //sword artwork from https://www.asciiart.eu/weapons/swords accessed 11/01/25
+                StreamReader sword = new StreamReader("graphics/sword.txt");
+                sword.Close();
             }
             catch 
-            { 
-                throw new Exception("Missing one or more files, please redownload from source."); 
+            {
+                Console.WriteLine("Exception detected!");
+                Console.WriteLine("One or more files missing. Please redownload from source.");
+                Environment.Exit(0);
             }
 
         }   
