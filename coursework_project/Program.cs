@@ -13,7 +13,7 @@
         static public void Main()
         {
             //Allows for use of unicode chars
-            //Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             File_Load.Check_files_proceedure();
 
