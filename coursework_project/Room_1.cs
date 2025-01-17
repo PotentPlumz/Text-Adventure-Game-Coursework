@@ -1,8 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
-namespace coursework_project
+﻿namespace coursework_project
 {
     internal class Room1_Program
     {
@@ -61,13 +57,13 @@ namespace coursework_project
                         break;
                     }
             }
-    }
+        }
 
         private static void Talk_to_Room1_Goblin()
         {
             List<string> goblin_art = File_Load.Load_image("graphics/goblin.txt");
             int talking_to_goblin_choice;
-            
+
             List<string> goblin_options = new List<string>();
             goblin_options.Add("Return to Dave");
 
@@ -89,9 +85,9 @@ namespace coursework_project
                 Display_text_func.Display_Text_with_Art("What do you want now?", "goblin", goblin_art);
             }
 
-                talking_to_goblin_choice = Menu_Call_Func.Display_Main_with_Question(goblin_options);
+            talking_to_goblin_choice = Menu_Call_Func.Display_Main_with_Question(goblin_options);
 
-            
+
             switch (talking_to_goblin_choice)
             {
                 case 1:
@@ -138,7 +134,7 @@ namespace coursework_project
                     {
                         if (Game_Saves.Chest1.Check_If_Opened() == false)
                         {
-                            Display_text_func.Display_Text_with_Art("A sword! Maybe this will show the goblin what's up. and some kind of weird red liquid in a bottle. Hopefully it will make me feel better if I drink it...", "" , sword_art);
+                            Display_text_func.Display_Text_with_Art("A sword! Maybe this will show the goblin what's up! There is also some kind of weird red liquid in a bottle. Hopefully it will make me feel better if I drink it...", "", sword_art);
                         }
                         Game_Saves.Chest1.Mark_As_Opened();
                         Interact_With_Chest();
@@ -177,7 +173,7 @@ namespace coursework_project
                     }
                 case 2:
                     {
-                        
+
                         if (Game_Saves.Chest1.Get_Contents().Contains(Game_Saves.Sword1))
                             Item_Transfer(Game_Saves.Sword1, Game_Saves.Chest1);
                         else
@@ -224,7 +220,7 @@ namespace coursework_project
             {
                 case 1:
                     {
- 
+
                         Room1_Main_Menu();
                         break;
                     }

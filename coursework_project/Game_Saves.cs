@@ -96,14 +96,16 @@ namespace coursework_project
 
             //Creates all of the string to be saved
             string player_save = JsonSerializer.Serialize(Program.current_player);
+            string player_inventory = JsonSerializer.Serialize(Program.current_player.Check_Inventory());
             string room1_save = JsonSerializer.Serialize(Room1);
-            string chest1_save = JsonSerializer.Serialize(Chest1);
+            string chest1_save = JsonSerializer.Serialize(Chest1.Get_Contents());
             string goblin_npc_1 = JsonSerializer.Serialize(Goblin_Room1);
 
             save_game_file.WriteLine("player=" + player_save);
             save_game_file.WriteLine("room1=" + room1_save);
             save_game_file.WriteLine("chest1=" +  chest1_save);
             save_game_file.WriteLine("goblin_room1=" + goblin_npc_1);
+            save_game_file.WriteLine("player_inventory=" + player_inventory);
 
             save_game_file.Close();
         }
@@ -159,6 +161,11 @@ namespace coursework_project
 
         private static void Load_Game_From_File(string filename)
         {
+            //The current save game functionality is currently broken. The information is being correctly serialised and I even 
+            // made another attempt at fixing it by attempting to serialise the inventories seperately. The Problem I have had is 
+            //the inventory class items aren't properly being deserialised so when you load the game from a save all the items
+            //you are meant to be able to pick up don't display or function correctly. 
+
             StreamReader save_to_load = new StreamReader(filename);
             Dictionary<string, string> savegame_dictionary = new Dictionary<string, string>();
             string[] reader;
@@ -174,7 +181,10 @@ namespace coursework_project
             Room1 = JsonSerializer.Deserialize<Room>(savegame_dictionary["room1"]);
             Goblin_Room1 = JsonSerializer.Deserialize<NPC>(savegame_dictionary["goblin_room1"]);
             Program.current_player = JsonSerializer.Deserialize<Player>(savegame_dictionary["player"]);
-            Chest1 = JsonSerializer.Deserialize<Storage>(savegame_dictionary["chest1"]);
+
+            Chest1.Clear_Contents();
+            Chest1.Set_Contents(JsonSerializer.Deserialize<List<Item>>(savegame_dictionary["chest1"]));
+
 
             save_to_load.Close();
 

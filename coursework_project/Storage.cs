@@ -42,6 +42,14 @@ namespace coursework_project
         {
             return contents;
         }
+        public void Clear_Contents()
+        {
+            this.contents.Clear();
+        }
+        public void Set_Contents(List<Item> contents)
+        {
+            this.contents = contents;
+        }
     }
 
 }

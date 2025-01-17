@@ -9,14 +9,11 @@ namespace coursework_project
         static public void Opening()
         {
 
-
             Display_Text_From_File.Read_Text("enviromental_desc/opening1.txt", Program.no_art_list);
-
-
 
             List<string> initial_options = new List<string>();
             initial_options.Add("Briskly try to wake him");
-            initial_options.Add("Approch him cautiously");
+            initial_options.Add("Approach him cautiously");
 
 
 
